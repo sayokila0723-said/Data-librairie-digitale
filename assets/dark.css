@@ -1,0 +1,275 @@
+/* Mode nuit — généré par make_dark.py */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #e7ecf2; --muted: #9aa6b3; --line: #2b3440; --paper: #0f141a; --card: #161c24; --surface-2: #1c232d; --bg: #0f141a;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6); --shadow-lg: 0 18px 40px -16px rgba(0,0,0,.7);
+  --wc-content-bg: #161c24; --wc-subtext: #9aa6b3; --wc-secondary: #1c232d; --wc-secondary-text: #c9d1da;
+}
+html[data-theme="dark"] body { background: #0f141a; color: #e7ecf2; }
+
+html[data-theme="dark"] .woocommerce form .show-password-input, html[data-theme="dark"] .woocommerce-page form .show-password-input { color: var(--wc-form-color-text,#e7ecf2) }
+html[data-theme="dark"] .twentyfifteen .t15wc { background: #161c24 }
+html[data-theme="dark"] .woocommerce form .form-row .input-text, html[data-theme="dark"] .woocommerce form .form-row select { background-color: var(--wc-form-color-background,#161c24); color: var(--wc-form-color-text,#e7ecf2) }
+html[data-theme="dark"] :where(.woocommerce) .select2-container .select2-selection--single .select2-selection__rendered { color: var(--wc-form-color-text,#a7b2bf) }
+html[data-theme="dark"] :where(.woocommerce) .select2-container .select2-selection--single .select2-selection__placeholder { color: var(--wc-form-color-text,#a7b2bf) }
+html[data-theme="dark"] :where(.woocommerce) .select2-container .select2-dropdown, html[data-theme="dark"] :where(.woocommerce) .select2-container .select2-selection { background-color: var(--wc-form-color-background,#161c24) }
+html[data-theme="dark"] .woocommerce small.note { color: #a7b2bf }
+html[data-theme="dark"] .woocommerce div.product div.images .woocommerce-product-gallery__wrapper .zoomImg { background-color: #161c24 }
+html[data-theme="dark"] .woocommerce div.product div.images .woocommerce-product-gallery__image--placeholder { border: 1px solid #2d3743 }
+html[data-theme="dark"] .woocommerce div.product div.images .woocommerce-product-gallery__trigger { background: #161c24 }
+html[data-theme="dark"] .woocommerce div.product .woocommerce-tabs ul.tabs li { border: 1px solid #2d3743; background-color: #1c232d; color: #a7b2bf }
+html[data-theme="dark"] .woocommerce div.product .woocommerce-tabs ul.tabs li a { color: #a7b2bf }
+html[data-theme="dark"] .woocommerce div.product .woocommerce-tabs ul.tabs li a:hover { color: #a7b2bf }
+html[data-theme="dark"] .woocommerce div.product .woocommerce-tabs ul.tabs li.active { background: #161c24; color: #a7b2bf; border-bottom-color: #2d3743 }
+html[data-theme="dark"] .woocommerce div.product .woocommerce-tabs ul.tabs li::after, html[data-theme="dark"] .woocommerce div.product .woocommerce-tabs ul.tabs li::before { border: 1px solid #2d3743 }
+html[data-theme="dark"] .woocommerce div.product .woocommerce-tabs ul.tabs::before { border-bottom: 1px solid #2d3743 }
+html[data-theme="dark"] .woocommerce ul.products li.product .woocommerce-placeholder { border: 1px solid #2d3743 }
+html[data-theme="dark"] .woocommerce nav.woocommerce-pagination ul { border: 1px solid #2d3743 }
+html[data-theme="dark"] .woocommerce nav.woocommerce-pagination ul li { border-right: 1px solid #2d3743 }
+html[data-theme="dark"] .woocommerce nav.woocommerce-pagination ul li a:focus, html[data-theme="dark"] .woocommerce nav.woocommerce-pagination ul li a:hover, html[data-theme="dark"] .woocommerce nav.woocommerce-pagination ul li span.current { background: #1c232d; color: #a7b2bf }
+html[data-theme="dark"] .woocommerce #reviews h2 small { color: #a7b2bf }
+html[data-theme="dark"] .woocommerce #reviews h2 small a { color: #a7b2bf }
+html[data-theme="dark"] .woocommerce #reviews #comments ol.commentlist li img.avatar { background: #1c232d; border: 1px solid #2d3743 }
+html[data-theme="dark"] .woocommerce #reviews #comments ol.commentlist li .comment-text { border: 1px solid #2d3743 }
+html[data-theme="dark"] .woocommerce #reviews #comments ol.commentlist #respond { border: 1px solid #2d3743 }
+html[data-theme="dark"] .woocommerce .widget_shopping_cart .total, html[data-theme="dark"] .woocommerce.widget_shopping_cart .total { border-top: 3px double #2d3743 }
+html[data-theme="dark"] .woocommerce ul.order_details li { border-right: 1px dashed #2d3743 }
+html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce #respond input#submit, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce a.button, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce button.button, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce input.button { color: #a7b2bf; background-color: #1c232d }
+html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce #respond input#submit:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce a.button:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce button.button:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce input.button:hover { background-color: #252e39; color: #a7b2bf }
+html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit.disabled:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit:disabled:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit:disabled[disabled]:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button.disabled:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button:disabled:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button:disabled[disabled]:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.disabled:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button:disabled:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button:disabled[disabled]:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button.disabled:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button:disabled:hover, html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button:disabled[disabled]:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce #respond input#submit.disabled:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce #respond input#submit:disabled:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce #respond input#submit:disabled[disabled]:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce a.button.disabled:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce a.button:disabled:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce a.button:disabled[disabled]:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce button.button.disabled:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce button.button:disabled:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce button.button:disabled[disabled]:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce input.button.disabled:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce input.button:disabled:hover, html[data-theme="dark"] :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce input.button:disabled[disabled]:hover { background-color: #1c232d }
+html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-uses-block-theme)) .woocommerce-breadcrumb { color: #a7b2bf }
+html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-uses-block-theme)) .woocommerce-breadcrumb a { color: #a7b2bf }
+html[data-theme="dark"] .woocommerce:where(body:not(.woocommerce-uses-block-theme)) #reviews #comments ol.commentlist li .meta { color: #a7b2bf }
+html[data-theme="dark"] .woocommerce-error, html[data-theme="dark"] .woocommerce-info, html[data-theme="dark"] .woocommerce-message { background-color: #1c232d; color: #a7b2bf }
+html[data-theme="dark"] .woocommerce-error::before { color: #e97177 }
+html[data-theme="dark"] #add_payment_method table.cart td.actions .coupon .input-text, html[data-theme="dark"] .woocommerce-cart table.cart td.actions .coupon .input-text, html[data-theme="dark"] .woocommerce-checkout table.cart td.actions .coupon .input-text { border: 1px solid #2d3743 }
+html[data-theme="dark"] #add_payment_method .cart-collaterals .cart_totals p small, html[data-theme="dark"] .woocommerce-cart .cart-collaterals .cart_totals p small, html[data-theme="dark"] .woocommerce-checkout .cart-collaterals .cart_totals p small { color: #a7b2bf }
+html[data-theme="dark"] #add_payment_method .cart-collaterals .cart_totals table small, html[data-theme="dark"] .woocommerce-cart .cart-collaterals .cart_totals table small, html[data-theme="dark"] .woocommerce-checkout .cart-collaterals .cart_totals table small { color: #a7b2bf }
+html[data-theme="dark"] #add_payment_method .cart-collaterals .cart_totals tr td, html[data-theme="dark"] #add_payment_method .cart-collaterals .cart_totals tr th, html[data-theme="dark"] .woocommerce-cart .cart-collaterals .cart_totals tr td, html[data-theme="dark"] .woocommerce-cart .cart-collaterals .cart_totals tr th, html[data-theme="dark"] .woocommerce-checkout .cart-collaterals .cart_totals tr td, html[data-theme="dark"] .woocommerce-checkout .cart-collaterals .cart_totals tr th { border-top: 1px solid #2d3743 }
+html[data-theme="dark"] #add_payment_method .checkout .create-account small, html[data-theme="dark"] .woocommerce-cart .checkout .create-account small, html[data-theme="dark"] .woocommerce-checkout .checkout .create-account small { color: #a7b2bf }
+html[data-theme="dark"] #add_payment_method #payment div.payment_box, html[data-theme="dark"] .woocommerce-cart #payment div.payment_box, html[data-theme="dark"] .woocommerce-checkout #payment div.payment_box { background-color: #252e39; color: #a7b2bf }
+html[data-theme="dark"] #add_payment_method #payment div.payment_box input.input-text, html[data-theme="dark"] #add_payment_method #payment div.payment_box textarea, html[data-theme="dark"] .woocommerce-cart #payment div.payment_box input.input-text, html[data-theme="dark"] .woocommerce-cart #payment div.payment_box textarea, html[data-theme="dark"] .woocommerce-checkout #payment div.payment_box input.input-text, html[data-theme="dark"] .woocommerce-checkout #payment div.payment_box textarea { border-color: #2d3743 }
+html[data-theme="dark"] #add_payment_method #payment div.payment_box span.help, html[data-theme="dark"] .woocommerce-cart #payment div.payment_box span.help, html[data-theme="dark"] .woocommerce-checkout #payment div.payment_box span.help { color: #a7b2bf }
+html[data-theme="dark"] #add_payment_method #payment div.payment_box::before, html[data-theme="dark"] .woocommerce-cart #payment div.payment_box::before, html[data-theme="dark"] .woocommerce-checkout #payment div.payment_box::before { border: 1em solid #2d3743 }
+html[data-theme="dark"] .woocommerce-order-withdrawal-content .description, html[data-theme="dark"] .woocommerce-order-withdrawal-content__field-description, html[data-theme="dark"] .woocommerce-order-withdrawal-content__note { color: #a7b2bf }
+html[data-theme="dark"] .woocommerce-order-withdrawal-content__steps { color: #a7b2bf }
+html[data-theme="dark"] .woocommerce-order-withdrawal-content__review-row:not(:last-child) { border-bottom: 1px solid #2d3743 }
+html[data-theme="dark"] .woocommerce-order-withdrawal-content__review-row dt { color: #a7b2bf }
+html[data-theme="dark"] a { color: #9cc3ef }
+html[data-theme="dark"] a:hover { color: color-mix(in srgb, #9cc3ef 75%, #000) }
+html[data-theme="dark"] .skip-link:focus { background: #161c24 }
+html[data-theme="dark"] .icon-btn { background: #161c24 }
+html[data-theme="dark"] .icon-btn:hover { color: #9cc3ef }
+html[data-theme="dark"] .site-header { background: #161c24 }
+html[data-theme="dark"] .text-logo__mark { color: #9cc3ef }
+html[data-theme="dark"] .text-logo__txt strong { color: #9cc3ef }
+html[data-theme="dark"] .search:focus-within { background: #161c24 }
+html[data-theme="dark"] .cart-count { border: 2px solid #2d3743 }
+html[data-theme="dark"] .mainnav__menu .sub-menu { background: #161c24 }
+html[data-theme="dark"] .catbox__title { color: #9cc3ef }
+html[data-theme="dark"] .catmenu > li > a:hover, html[data-theme="dark"] .catmenu > li:hover > a { color: #9cc3ef }
+html[data-theme="dark"] .catmenu__icon { color: #9cc3ef }
+html[data-theme="dark"] .catmenu__sub { background: #161c24 }
+html[data-theme="dark"] .catmenu__sub a:hover { color: #9cc3ef }
+html[data-theme="dark"] .hero__art span:nth-child(1) { background: #161c24 }
+html[data-theme="dark"] .hero__nav { background: rgba(255,255,255,0.08) }
+html[data-theme="dark"] .hero__dots button { background: rgba(255,255,255,0.08) }
+html[data-theme="dark"] .feature__icon { background: color-mix(in srgb, var(--accent) 22%, #161c24); color: #9cc3ef }
+html[data-theme="dark"] .tile__cta { background: rgba(255,255,255,0.08) }
+html[data-theme="dark"] .tile__img { background: #161c24 }
+html[data-theme="dark"] .tile:hover .tile__img { background: #161c24 }
+html[data-theme="dark"] .tile::after { background: rgba(255,255,255,0.08) }
+html[data-theme="dark"] .carousel-btn { background: #161c24 }
+html[data-theme="dark"] ul.products li.product img { background: #161c24 }
+html[data-theme="dark"] ul.products li.product .price { color: #9cc3ef !important }
+html[data-theme="dark"] .listcta__inner { background-image: radial-gradient(circle at 100% 0, rgba(255,255,255,0.08) 0 120px, transparent 121px), repeating-linear-gradient(0deg, transparent 0 27px, rgba(29, 53, 87, .08) 27px 28px) }
+html[data-theme="dark"] .woocommerce .woocommerce-ordering select { background: #161c24 }
+html[data-theme="dark"] .woocommerce nav.woocommerce-pagination ul li a, html[data-theme="dark"] .woocommerce nav.woocommerce-pagination ul li span { background: #161c24 }
+html[data-theme="dark"] .single-product div.product p.price, html[data-theme="dark"] .single-product div.product span.price { color: #9cc3ef !important }
+html[data-theme="dark"] .woocommerce div.product .woocommerce-tabs ul.tabs li.active a { color: #9cc3ef !important }
+html[data-theme="dark"] .woocommerce-message, html[data-theme="dark"] .woocommerce-info, html[data-theme="dark"] .woocommerce-error { background: #161c24 !important }
+html[data-theme="dark"] .woocommerce form .form-row input.input-text, html[data-theme="dark"] .woocommerce form .form-row textarea, html[data-theme="dark"] .woocommerce form .form-row select { background: #161c24 }
+html[data-theme="dark"] .woocommerce table.shop_table { background: #161c24 }
+html[data-theme="dark"] .notice-box { background: #161c24 }
+html[data-theme="dark"] .social a { border: 1px solid rgba(255,255,255,0.12) }
+html[data-theme="dark"] .footer__bottom { border-top: 1px solid rgba(255,255,255,0.12) }
+html[data-theme="dark"] .drawer__panel { background: #161c24 }
+html[data-theme="dark"] .footer__pay span { border: 1px solid rgba(255,255,255,0.12) }
+html[data-theme="dark"] .contact-card__icon { background: #161c24; color: #9cc3ef }
+html[data-theme="dark"] .style-pro .topbar a:hover { color: #9cc3ef }
+html[data-theme="dark"] .style-pro .topbar__msg { color: #9cc3ef }
+html[data-theme="dark"] .style-pro .search { background: #161c24 }
+html[data-theme="dark"] .style-pro .cart-count { border-color: #2d3743 }
+html[data-theme="dark"] .style-pro .mainnav__menu > li > a:hover { background: rgba(255,255,255,0.08) }
+html[data-theme="dark"] .style-pro .allcats__panel { background: #161c24 }
+html[data-theme="dark"] .style-pro .catmenu > li > a:hover, html[data-theme="dark"] .style-pro .catmenu > li:hover > a { color: #9cc3ef }
+html[data-theme="dark"] .style-pro .hero__content::before { background: rgba(255,255,255,0.08) }
+html[data-theme="dark"] .style-pro .promo { background: #161c24 }
+html[data-theme="dark"] .style-pro .promo--1:not(.has-image) { background: linear-gradient(135deg, #161c24 0%, #ffe3a6 100%) }
+html[data-theme="dark"] .style-pro .promo--2:not(.has-image) { background: linear-gradient(135deg, #182b3f 0%, #c9e1fb 100%) }
+html[data-theme="dark"] .style-pro .promo--1:not(.has-image)::after, html[data-theme="dark"] .style-pro .promo--2:not(.has-image)::after { border: 18px solid rgba(255,255,255,0.12) }
+html[data-theme="dark"] .style-pro .promo__btn { color: #9cc3ef }
+html[data-theme="dark"] .style-pro .features { background: #161c24 }
+html[data-theme="dark"] .style-pro .feature__icon { color: #9cc3ef }
+html[data-theme="dark"] .rayon { background: #161c24 }
+html[data-theme="dark"] .rayon__media { color: #9cc3ef }
+html[data-theme="dark"] .style-pro .psection__all { color: #9cc3ef }
+html[data-theme="dark"] .style-pro ul.products li.product:hover { border-color: #2d3743 }
+html[data-theme="dark"] .style-pro ul.products li.product .price ins { color: #e47777 }
+html[data-theme="dark"] .style-pro ul.products li.product .button, html[data-theme="dark"] .style-pro.woocommerce ul.products li.product .button { background: #161c24 !important; color: #9cc3ef !important }
+html[data-theme="dark"] .style-pro .listcta__icon { color: #9cc3ef }
+html[data-theme="dark"] .style-pro .footer__logo .text-logo__mark { color: #9cc3ef }
+html[data-theme="dark"] { background-color: #1c232d }
+html[data-theme="dark"] { color: #e7ecf2 }
+html[data-theme="dark"] { background: linear-gradient(135deg,#161c24,#67a671) }
+html[data-theme="dark"] .screen-reader-text:focus { background-color: #252e39; color: #a7b2bf }
+html[data-theme="dark"] .has-black-color { color: var(--wp--preset--color--#e7ecf2) !important }
+html[data-theme="dark"] .has-white-background-color { background-color: var(--wp--preset--color--#161c24) !important }
+html[data-theme="dark"] .has-white-border-color { border-color: var(--wp--preset--color--#2d3743) !important }
+html[data-theme="dark"], html[data-theme="dark"] body { background: #1c232d }
+html[data-theme="dark"] .text-logo__txt strong { color: #9cc3ef }
+html[data-theme="dark"] .langs a:not(.is-active):hover { color: #9cc3ef !important }
+html[data-theme="dark"] .langs--footer a { border-color: rgba(255,255,255,0.12) }
+html[data-theme="dark"] .langs--footer a.is-active { color: #9cc3ef !important }
+html[data-theme="dark"] .svc { background: #161c24 }
+html[data-theme="dark"] .svc__price { color: #9cc3ef }
+html[data-theme="dark"] .svc-nav a { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12) }
+html[data-theme="dark"] .svc-nav a:hover { color: #9cc3ef !important }
+html[data-theme="dark"] .svc-group__icon { color: #9cc3ef }
+html[data-theme="dark"] .svc-how { background: #161c24 }
+html[data-theme="dark"] .subchips a { background: #161c24 }
+html[data-theme="dark"] .woocommerce-pagination li a, html[data-theme="dark"] .woocommerce-pagination li span { background: #161c24 }
+html[data-theme="dark"] .product.single { background: #161c24 }
+html[data-theme="dark"] .pgal { background: #161c24 }
+html[data-theme="dark"] .summary .price ins { color: #e47777 }
+html[data-theme="dark"] .skip-link:focus { background: #161c24 }
+html[data-theme="dark"] .nova .site-header { background: #161c24; border-bottom: 1px solid #2d3743 }
+html[data-theme="dark"] .nova .search__input { background: #1c232d; border: 1px solid #2d3743 }
+html[data-theme="dark"] .nova .search__input:focus { background: #161c24 }
+html[data-theme="dark"] .nb-hbtn { border: 1px solid #2d3743; color: #a7b2bf !important; background: #161c24 }
+html[data-theme="dark"] .nova .mainnav { background: #161c24; border-bottom: 1px solid #2d3743 }
+html[data-theme="dark"] .nova .mainnav__menu a { color: #e7ecf2 !important }
+html[data-theme="dark"] .nova .mainnav__menu > li > a:hover { background: #1c232d !important }
+html[data-theme="dark"] .nb-cats { background: #161c24 }
+html[data-theme="dark"] .nb-cats__title { color: #e7ecf2 }
+html[data-theme="dark"] .nb-cats .catmenu a { color: #e7ecf2 }
+html[data-theme="dark"] .nb-cats .catmenu > li > a:hover { background: #1c232d !important }
+html[data-theme="dark"] .catmenu__icon--svc { background: #183f24 !important }
+html[data-theme="dark"] .nb-hero { background: #161c24 !important }
+html[data-theme="dark"] .nb-t { color: #68a3f3 }
+html[data-theme="dark"] .nb-y { color: #a7b2bf }
+html[data-theme="dark"] .nb-ribbon { background: #161c24 }
+html[data-theme="dark"] .nb-s1 { background: linear-gradient(100deg, #161c24 0%, #3f3418 55%, #ffe58a 100%) }
+html[data-theme="dark"] .nb-poly { background: #161c24 }
+html[data-theme="dark"] .nb-chip { background: #161c24; color: #9cc3ef }
+html[data-theme="dark"] .nb-s3 { background-color: #182c3f }
+html[data-theme="dark"] .nb-s3 .nb-t { color: #9cc3ef }
+html[data-theme="dark"] .nb-dots { background: #161c24 }
+html[data-theme="dark"] .nb-dots button { background: #252e39 !important }
+html[data-theme="dark"] .nb-tile--orange .nb-tile__b { background: #161c24 }
+html[data-theme="dark"] .nb-tile--svc { background: #161c24; color: #9cc3ef !important; border: 1px solid #2d3743 }
+html[data-theme="dark"] .nb-tile--svc .nb-tile__t { color: #9cc3ef }
+html[data-theme="dark"] .nb-tile__s { color: #a7b2bf }
+html[data-theme="dark"] .nb-tile--list { background-color: #182e3f }
+html[data-theme="dark"] .lang-ar .nb-tile--list .nb-tile__t { color: #9cc3ef }
+html[data-theme="dark"] .nb-block { background: #161c24 }
+html[data-theme="dark"] .nb-band { background: #1c232d; border-bottom: 1px solid #2d3743 }
+html[data-theme="dark"] .nb-band h2 { color: #e7ecf2 }
+html[data-theme="dark"] .nb-band p { color: #a7b2bf }
+html[data-theme="dark"] .nova ul.products li.nb-card { border: 1px solid #2d3743 !important }
+html[data-theme="dark"] .nova ul.products li.nb-card:hover { border-color: #2d3743 !important }
+html[data-theme="dark"] .nb-card__img { background: #161c24 }
+html[data-theme="dark"] .nova ul.products li.nb-card img { background: #161c24 !important }
+html[data-theme="dark"] .nova ul.products li.nb-card .woocommerce-loop-product__title { color: #a7b2bf !important }
+html[data-theme="dark"] .nova ul.products li.nb-card .price { color: #e7ecf2 !important }
+html[data-theme="dark"] .nb-sw small { color: #a7b2bf }
+html[data-theme="dark"] .variants__label { color: #a7b2bf }
+html[data-theme="dark"] .variants__label strong { color: #e7ecf2 }
+html[data-theme="dark"] .swatch { background: #161c24 }
+html[data-theme="dark"] .plan__head p { color: #a7b2bf }
+html[data-theme="dark"] .plan__map { background: #1c232d; border: 1px solid #2d3743 }
+html[data-theme="dark"] .plan__info { background: #161c24; border: 1px solid #2d3743 }
+html[data-theme="dark"] .plan__hours { color: #a7b2bf }
+html[data-theme="dark"] .pb { background: #161c24; color: #e7ecf2; border: 1px solid #2d3743 }
+html[data-theme="dark"] .pb--visa { color: #e7ecf2 }
+html[data-theme="dark"] .pb--mc { color: #e7ecf2 }
+html[data-theme="dark"] .pb--lock { background: #183e23 }
+html[data-theme="dark"] .site-footer .paybadges .pb { background: rgba(255,255,255,0.08) }
+html[data-theme="dark"] .costeps li { background: #161c24; border: 1px solid #2d3743 }
+html[data-theme="dark"] .costeps li span { background: #1c232d }
+html[data-theme="dark"] .costeps li.is-on { color: #e7ecf2 }
+html[data-theme="dark"] .cosum { background: #161c24; border: 1px solid #2d3743 }
+html[data-theme="dark"] .cosum__more { color: #e7ecf2 }
+html[data-theme="dark"] .sumt__total { border-top: 1px solid #2d3743; color: #e7ecf2 }
+html[data-theme="dark"] .cartbox, html[data-theme="dark"] .cobox { background: #161c24; border: 1px solid #2d3743 }
+html[data-theme="dark"] .cline { border-bottom: 1px solid #2d3743 }
+html[data-theme="dark"] .cline__img img { background: #1c232d }
+html[data-theme="dark"] .cline__info a { color: #e7ecf2 }
+html[data-theme="dark"] .cline__pu { color: #a7b2bf }
+html[data-theme="dark"] .cline__qty { border: 1px solid #2d3743 }
+html[data-theme="dark"] .cline__qty button { background: #1c232d }
+html[data-theme="dark"] .cline__rm { color: #ec786f }
+html[data-theme="dark"] .fld input, html[data-theme="dark"] .fld textarea { border: 1px solid #2d3743 }
+html[data-theme="dark"] .fld.is-bad input { background: #3f1818 }
+html[data-theme="dark"] .opt { border: 1.5px solid #2d3743 }
+html[data-theme="dark"] .opt__ic { background: #1b293b; color: #e7ecf2 }
+html[data-theme="dark"] .opt__t small { color: #a7b2bf }
+html[data-theme="dark"] .opt.is-on { background: #161c24 }
+html[data-theme="dark"] .soon { background: #3f3718 }
+html[data-theme="dark"] .co__secure { color: #a7b2bf }
+html[data-theme="dark"] .codone { background: #161c24; border: 1px solid #2d3743 }
+html[data-theme="dark"] .codone p { color: #a7b2bf }
+html[data-theme="dark"] .codone__no strong { color: #e7ecf2 }
+html[data-theme="dark"] .cobank { background: #161c24; border: 1px dashed #2d3743 }
+html[data-theme="dark"] .paycard { background: #161c24; border: 1px solid #2d3743 }
+html[data-theme="dark"] .paycard p { color: #a7b2bf }
+html[data-theme="dark"] .paysec { background: #183e23 }
+html[data-theme="dark"] .paybadges a.pb--lock, html[data-theme="dark"] .site-footer .paybadges a.pb--lock { background: #183e23 !important }
+html[data-theme="dark"] .packs__head p { color: #a7b2bf }
+html[data-theme="dark"] .pack { background: #161c24; border: 1.5px solid #2d3743 }
+html[data-theme="dark"] .pack--best { background: linear-gradient(180deg, #161c24 0%, #161c24 40%) }
+html[data-theme="dark"] .pack__name { color: #e7ecf2 }
+html[data-theme="dark"] .pack__tag { color: #a7b2bf }
+html[data-theme="dark"] .pack__price small { color: #a7b2bf }
+html[data-theme="dark"] .pack__incl { color: #e7ecf2 }
+html[data-theme="dark"] .vtab { border: 1.5px solid #2d3743; background: #161c24; color: #e7ecf2 }
+/* --- ajustements manuels du mode nuit --- */
+html[data-theme="dark"] img { filter: brightness(.94); }
+html[data-theme="dark"] .nb-card__img, html[data-theme="dark"] .pgal, html[data-theme="dark"] .cline__img img { background: #fff; border-radius: 8px; }
+html[data-theme="dark"] input, html[data-theme="dark"] select, html[data-theme="dark"] textarea { background: #11171e; color: #e7ecf2; border-color: #33404d; }
+html[data-theme="dark"] ::placeholder { color: #7d8996; }
+html[data-theme="dark"] .site-footer, html[data-theme="dark"] .topbar { background: #0a0f15; }
+html[data-theme="dark"] a { color: #9cc3ef; }
+html[data-theme="dark"] .btn--primary, html[data-theme="dark"] .single_add_to_cart_button { background: #f7c714 !important; color: #001d3b !important; }
+html[data-theme="dark"] .allcats__btn { background: #0b2a4f; }
+html[data-theme="dark"] .toast { background: #26313d; }
+/* bouton jour / nuit */
+.theme-toggle { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.18); border-radius: 20px; height: 26px; padding: 0 10px; font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer; margin-inline-start: 12px; }
+.theme-toggle:hover { background: rgba(255,255,255,.2); }
+.theme-toggle .ic-sun { display: none; }
+html[data-theme="dark"] .theme-toggle .ic-sun { display: inline; } html[data-theme="dark"] .theme-toggle .ic-moon { display: none; }
+html[data-theme="dark"] .theme-toggle { background: #f7c714; color: #001d3b; border-color: #f7c714; }
+.theme-toggle__lbl-d { display: none; } html[data-theme="dark"] .theme-toggle__lbl-d { display: inline; } html[data-theme="dark"] .theme-toggle__lbl-l { display: none; }
+@media (max-width: 720px) { .theme-toggle { margin-inline-start: 8px; } }
+html[data-theme="dark"] .btn--whatsapp, html[data-theme="dark"] a.btn--whatsapp, html[data-theme="dark"] .mainnav__wa { color: #fff !important; }
+html[data-theme="dark"] .woocommerce div.product form.cart .button, html[data-theme="dark"] .woocommerce .single_add_to_cart_button.button, html[data-theme="dark"] .nb-buy--choose { background: #f7c714 !important; color: #001d3b !important; }
+html[data-theme="dark"] .langs a.is-active { color: #001d3b !important; }
+html[data-theme="dark"] .topbar .langs a.is-active { color: #fff !important; }
+html[data-theme="dark"] .paybadges a.pb--lock { background: #173823 !important; color: #8fe0a8 !important; border-color: #245c37; }
+html[data-theme="dark"] .paybadges .pb { background: #f4f6f8; }
+html[data-theme="dark"] .nb-tile--svc, html[data-theme="dark"] .nb-tile:first-child { background: #16314f; }
+html[data-theme="dark"] .text-logo__txt strong { color: #f1f4f8; }
+html[data-theme="dark"] .nb-s1, html[data-theme="dark"] .nb-s2, html[data-theme="dark"] .nb-s3 { background: linear-gradient(100deg, #141b24 0%, #1b2430 55%, #3a3216 100%) !important; }
+html[data-theme="dark"][dir="rtl"] .nb-s1, html[data-theme="dark"][dir="rtl"] .nb-s2, html[data-theme="dark"][dir="rtl"] .nb-s3 { background: linear-gradient(260deg, #141b24 0%, #1b2430 55%, #3a3216 100%) !important; }
+html[data-theme="dark"] .paybadges .pb { color: #1d2b3a !important; }
+html[data-theme="dark"] .paybadges .pb--visa { color: #1a1f71 !important; } html[data-theme="dark"] .paybadges .pb--cmi { color: #0b5ea8 !important; }
+html[data-theme="dark"] .paybadges .pb svg { color: #2fa84f; }
+.lang-ar .topbar .theme-toggle [class^="theme-toggle__lbl"] { display: none; }
+@media (max-width: 720px) { .lang-ar .topbar .theme-toggle [class^="theme-toggle__lbl-l"] { display: inline; } html[data-theme="dark"] .lang-ar .topbar .theme-toggle .theme-toggle__lbl-l { display: none; } html[data-theme="dark"] .lang-ar .topbar .theme-toggle .theme-toggle__lbl-d { display: inline; } }
+html[data-theme="dark"] .pack--best { background: linear-gradient(180deg, #2a2615 0%, #161c24 45%); border-color: #f7c714; }
+html[data-theme="dark"] .pack__ic { background: #0b2a4f; }
+html[data-theme="dark"] .pack--best .pack__btn { background: #f7c714; color: #001d3b !important; }
+html[data-theme="dark"] .pack__name, html[data-theme="dark"] .pack__incl { color: #e7ecf2; }
+html[data-theme="dark"] .packs__custom, html[data-theme="dark"] .packs__custom a { color: #8fe0a8; }
+html[data-theme="dark"] .vtab { background: #161c24; color: #e7ecf2; border-color: #33404d; }
+html[data-theme="dark"] .vtab.is-on { background: #f7c714; color: #001d3b; border-color: #f7c714; }

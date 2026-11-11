@@ -1,0 +1,21 @@
+# Secrets & environment files — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Logs & temp
+*.log
+*.tmp
+*.bak
+
+# Netlify local state
+.netlify/
