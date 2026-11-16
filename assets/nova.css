@@ -504,3 +504,20 @@
 .catmenu .catmenu__mega .mega__title { padding: 4px 6px 6px !important; font-size: 14px !important; font-weight: 800 !important; color: var(--g) !important; }
 .catmenu .catmenu__mega .mega__head a { padding: 2px 6px 10px !important; font-size: 16px !important; font-weight: 800 !important; color: #001d3b !important; }
 .drawer .catmenu .catmenu__mega { width: auto; }
+
+/* ===== Menus en cascade (comme Nova Bureau) ===== */
+.catmenu .catmenu__casc { width: 290px; min-width: 290px; padding: 0 !important; border-radius: 4px !important; background: #fff; border: 1px solid #e3e6ea; }
+.catmenu .catmenu__casc > li + li { border-top: 1px solid #eef0f3; }
+.catmenu .catmenu__casc > li > a { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 16px !important; font-size: 14px !important; font-weight: 500 !important; color: #3b4652 !important; border-radius: 0 !important; background: none !important; }
+.catmenu .catmenu__casc > li > a svg { color: #9aa3ad; flex: 0 0 auto; }
+.catmenu .catmenu__casc > li:hover > a { background: #f2f4f7 !important; color: var(--g) !important; }
+.catmenu .catmenu__casc .catmenu__casc { top: -1px; left: 100%; }
+.catmenu .catmenu__casc .catmenu__toggle { display: none; }
+.rtl .catmenu .catmenu__casc .catmenu__casc { left: auto; right: 100%; }
+/* tiroir mobile : accordéons */
+.drawer .catmenu .catmenu__casc { width: auto; min-width: 0; border: 0; padding: 0 0 4px 22px !important; }
+.drawer .catmenu .catmenu__casc .catmenu__toggle { display: grid; }
+.drawer .catmenu .catmenu__casc > li { display: grid; grid-template-columns: 1fr auto; }
+.drawer .catmenu .catmenu__casc > li > a { padding: 10px 8px !important; }
+.drawer .catmenu .catmenu__casc > li > a svg { display: none; }
+.drawer .catmenu .catmenu__casc .catmenu__casc { grid-column: 1 / -1; }
