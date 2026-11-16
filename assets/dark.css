@@ -279,3 +279,4 @@ html[data-theme="dark"] .vtab.is-on { background: #f7c714; color: #001d3b; borde
 html[data-theme="dark"] .rtile { background: #161c24; border-color: #2b3440; color: #e7ecf2; }
 html[data-theme="dark"] .rtile__img { background: #fff; }
 html[data-theme="dark"] .rtile__n { color: #9aa6b3; }
+html[data-theme="dark"] .plan__btn.plan__go { background: #2fa84f !important; color: #fff !important; }
