@@ -57,6 +57,11 @@ ICONS = {
  'store': '<path d="M3 9 5 4h14l2 5"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-5h4v5"/>',
  'home2': '<path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10"/>',
  'check': '<path d="m5 12 5 5 9-10"/>',
+ 'mouse': '<rect x="6" y="3" width="12" height="18" rx="6"/><path d="M12 7v4"/>',
+ 'books': '<path d="M4 4h4v16H4zM9 4h4v16H9z"/><path d="m14.5 5.2 3.8-1 3.7 15.5-3.8 1z"/><path d="M4 8h4M9 8h4M4 16h4M9 16h4"/>',
+ 'backpack': '<path d="M5 10a7 7 0 0 1 14 0v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/><path d="M9 3h6v3H9zM8 21v-6h8v6M10 10h4"/>',
+ 'abacus': '<rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 8h18M3 13h18M3 18h18"/><circle cx="8" cy="8" r="1.4"/><circle cx="11" cy="8" r="1.4"/><circle cx="15" cy="13" r="1.4"/><circle cx="7" cy="13" r="1.4"/><circle cx="12" cy="18" r="1.4"/><circle cx="16" cy="18" r="1.4"/>',
+ 'palette': '<path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.6-.9 1.2-1.8-.5-1-.2-2.2 1.2-2.2H17a4 4 0 0 0 4-4c0-5.5-4-10-9-10z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10" cy="7" r="1.2"/><circle cx="15" cy="7.5" r="1.2"/>',
  'rocket': '<path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c1-4 4-8 10-9 1 0 2 1 2 2-1 6-5 9-9 10z"/><circle cx="14.5" cy="9.5" r="1.6"/><path d="M6 12H3l2-4h4M12 18v3l4-2v-4"/>',
  'play': '<rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/>',
  'share': '<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="m8.2 10.8 7.6-3.6M8.2 13.2l7.6 3.6"/>',
@@ -110,6 +115,17 @@ IP.CAT_DESC["Livres"] = ("Textbooks, dictionaries, revision guides, novels and c
 def cname(fr, L):
     return fr if L == "fr" else IP.CATS[fr][0 if L == "en" else 1]
 def cslug(fr): return "c-" + slug(fr)
+
+import groups as _GR
+GROUPS = _GR.GROUPS
+def gname(g, L): return g[{"fr": 0, "en": 1, "ar": 2}[L]]
+def gslug(g): return "g-" + slug(g[0])
+def eslug(e):  # entrée de famille : sous-groupe ou sous-rayon
+    if isinstance(e, tuple): return cslug(e[4]) if e[4] else "g-" + slug(e[0])
+    return cslug(e)
+def ename(e, L): return gname(e, L) if isinstance(e, tuple) else cname(e, L)
+def esubs(e): return e[3] if isinstance(e, tuple) else [e]
+def gsubs(g): return [x for e in g[5] for x in esubs(e)]
 # ---- produits déclinés en couleurs ----
 _byname = {p["name"]: p for p in P}
 _byname_all = {p["sku"]: p["name"] for p in P}
@@ -164,14 +180,21 @@ def head(L, title, root, desc=""):
             '<script>(function(){var t=null;try{t=localStorage.getItem("ld_theme")}catch(e){}if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark")})()</script></head>')
 
 def catmenu(L, root, services=False):
-    out = ['<ul class="catmenu">']
+    out = ['<ul class="catmenu catmenu--groups">']
     if services:
         out.append(f'<li class="catmenu__item catmenu__item--svc"><a href="services.html"><span class="catmenu__icon catmenu__icon--svc">{ic("monitor", 18)}</span><span class="catmenu__label">{E(NV.N[L]["svc_cat"])}</span><span class="catmenu__arrow">{ic("chevron", 14)}</span></a></li>')
-    for t in TOPS:
-        out.append(f'<li class="catmenu__item has-children"><a href="{cslug(t)}.html"><span class="catmenu__icon"><img src="{root}{cat_first_img(t)}" alt="" loading="lazy"></span><span class="catmenu__label">{E(cname(t, L))}</span><span class="catmenu__arrow">{ic("chevron", 14)}</span></a>'
-                   f'<button class="catmenu__toggle" aria-label="+">{ic("chevron", 14)}</button><ul class="catmenu__sub">')
-        for s in SUBS[t]:
-            out.append(f'<li><a href="{cslug(s)}.html"><span>{E(cname(s, L))}</span></a></li>')
+    for g in GROUPS:
+        ents = g[5]
+        sgs = [e for e in ents if isinstance(e, tuple)]
+        out.append(f'<li class="catmenu__item has-children"><a href="{gslug(g)}.html"><span class="catmenu__icon catmenu__icon--line">{ic(g[3], 20)}</span><span class="catmenu__label">{E(gname(g, L))}</span><span class="catmenu__arrow">{ic("chevron", 14)}</span></a>'
+                   f'<button class="catmenu__toggle" aria-label="+">{ic("chevron", 14)}</button><ul class="catmenu__sub catmenu__mega{" catmenu__mega--flat" if not sgs else ""}">'
+                   f'<li class="mega__head"><a href="{gslug(g)}.html">{E(gname(g, L))} <small>›</small></a></li>')
+        for e in ents:
+            if isinstance(e, tuple):
+                out.append(f'<li class="mega__col"><a class="mega__title" href="{eslug(e)}.html">{E(ename(e, L))}</a><button class="catmenu__toggle" aria-label="+">{ic("chevron", 14)}</button><ul class="catmenu__sub3">' +
+                           "".join(f'<li><a href="{cslug(x)}.html">{E(cname(x, L))}</a></li>' for x in e[3]) + '</ul></li>')
+            else:
+                out.append(f'<li class="mega__item"><a href="{cslug(e)}.html">{E(cname(e, L))}</a></li>')
         out.append('</ul></li>')
     out.append('</ul>')
     return "".join(out)
@@ -188,7 +211,7 @@ def header(L, file, root, active=""):
     langs = "".join(f'<a href="{root}{"" if l == "fr" else l + "/"}{file}" class="{"is-active" if l == L else ""}" hreflang="{l}" lang="{l}">{SI.UI[l]["lang_name"]}</a>' for l in LANGS)
     opts = "".join(f'<option value="{slug(t)}">{E(cname(t, L))}</option>' for t in TOPS)
     nav = [("index.html", U["home"]), ("boutique.html", U["shop"]), ("services.html", U["services"]),
-           (cslug(TOPS[0]) + ".html", cname(TOPS[0], L)), (cslug(TOPS[1]) + ".html", cname(TOPS[1], L)), (cslug(TOPS[2]) + ".html", cname(TOPS[2], L)), ("contact.html", U["contact"])]
+           (gslug(GROUPS[0]) + ".html", gname(GROUPS[0], L)), (gslug(GROUPS[4]) + ".html", gname(GROUPS[4], L)), (gslug(GROUPS[3]) + ".html", gname(GROUPS[3], L)), ("contact.html", U["contact"])]
     navh = "".join(f'<li class="{"current-menu-item" if f == active else ""}"><a href="{f}">{E(t)}</a></li>' for f, t in nav)
     home = file == "index.html"
     return f'''<body class="nova style-pro woocommerce woocommerce-page{' rtl' if L == 'ar' else ''} lang-{L}{' home' if home else ''}">
@@ -226,7 +249,7 @@ def pay_badges(L, big=False):
 
 def footer(L, file, root):
     U = SI.UI[L]
-    cats = "".join(f'<li><a href="{cslug(t)}.html">{E(cname(t, L))}</a></li>' for t in TOPS[:7])
+    cats = "".join(f'<li><a href="{gslug(g)}.html">{E(gname(g, L))}</a></li>' for g in GROUPS)
     info = "".join(f'<li><a href="{f}">{E(t)}</a></li>' for f, t in [("services.html", U["services"]), ("a-propos.html", U["about"]), ("paiement.html", PJ.J[L]["pays_t"]), ("livraison-retours.html", U["delivery"]), ("conditions-generales-de-vente.html", U["terms"]), ("contact.html", U["contact"])])
     langs = "".join(f'<a href="{root}{"" if l == "fr" else l + "/"}{file}" class="{"is-active" if l == L else ""}" lang="{l}">{SI.UI[l]["lang_name"]}</a>' for l in LANGS)
     i18n = {k: U[k] for k in ["wa_hello", "wa_name", "wa_addr", "wa_unit", "wa_service", "toast", "results_for", "no_result", "all_products", "order", "in_stock"]}
@@ -474,9 +497,31 @@ def rgrid(L, names, pre, sub=True):
         f'<a class="rtile" href="{cslug(x)}.html"><span class="rtile__img"><img src="{pre}{cat_first_img(x)}" alt="" loading="lazy" width="200" height="200"></span>'
         f'<span class="rtile__name">{E(cname(x, L))}</span><span class="rtile__n">{n_of(x)} {E(U["products"])}</span></a>' for x in names) + '</div>')
 
+def gtiles(L, ents, pre):
+    U = SI.UI[L]
+    def img(e): return cat_first_img(e[4]) if isinstance(e, tuple) and e[4] else cat_first_img(esubs(e)[0])
+    def n(e): return sum(1 for p in P if p["sub"] in esubs(e))
+    return ('<div class="rgrid">' + "".join(
+        f'<a class="rtile" href="{eslug(e)}.html"><span class="rtile__img"><img src="{pre}{img(e)}" alt="" loading="lazy" width="200" height="200"></span>'
+        f'<span class="rtile__name">{E(ename(e, L))}</span><span class="rtile__n">{n(e)} {E(U["products"])}</span></a>' for e in ents) + '</div>')
+
+def build_groups(L):
+    pre = "" if L == "fr" else "../"; k = {"fr": 0, "en": 1, "ar": 2}[L]
+    for g in GROUPS:
+        build_listing(L, gslug(g), gname(g, L), g[4][k], [p for p in P if p["sub"] in gsubs(g)], gtiles(L, g[5], pre))
+        for e in g[5]:
+            if isinstance(e, tuple) and not e[4]:
+                back = (f'<div class="subchips"><a href="{gslug(g)}.html">← {E(gname(g, L))}</a>' +
+                        "".join(f'<a href="{cslug(x)}.html">{E(cname(x, L))}</a>' for x in e[3]) + '</div>')
+                build_listing(L, eslug(e), ename(e, L), "", [p for p in P if p["sub"] in e[3]], back if len(e[3]) > 1 else back)
+
 def build_categories(L):
     U = SI.UI[L]; pre = "" if L == "fr" else "../"
-    build_listing(L, "boutique", U["shop"], "", P, rgrid(L, TOPS, pre, sub=False))
+    build_groups(L)
+    _gt = ('<div class="rgrid">' + "".join(
+        f'<a class="rtile" href="{gslug(g)}.html"><span class="rtile__img rtile__img--icon">{ic(g[3], 54)}</span>'
+        f'<span class="rtile__name">{E(gname(g, L))}</span><span class="rtile__n">{sum(1 for p in P if p["sub"] in gsubs(g))} {E(U["products"])}</span></a>' for g in GROUPS) + '</div>')
+    build_listing(L, "boutique", U["shop"], "", P, _gt)
     for t in TOPS:
         chips = rgrid(L, SUBS[t], pre)
         desc = catalog.CAT_DESC[t] if L == "fr" else IP.CAT_DESC[t][0 if L == "en" else 1]
