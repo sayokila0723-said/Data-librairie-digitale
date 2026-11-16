@@ -179,11 +179,18 @@ def head(L, title, root, desc=""):
             f'<link rel="icon" href="{root}img/favicon.png">{alt}{FONTS}<link rel="stylesheet" href="{root}assets/site.css"><link rel="stylesheet" href="{root}assets/digitale.css"><link rel="stylesheet" href="{root}assets/nova.css"><link rel="stylesheet" href="{root}assets/dark.css">'
             '<script>(function(){var t=null;try{t=localStorage.getItem("ld_theme")}catch(e){}if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark")})()</script></head>')
 
-def catmenu(L, root, services=False):
+def catmenu(L, root, services=True):
     chev = ic("chevron", 14)
     out = ['<ul class="catmenu catmenu--groups">']
     if services:
-        out.append(f'<li class="catmenu__item catmenu__item--svc"><a href="services.html"><span class="catmenu__icon catmenu__icon--svc">{ic("monitor", 18)}</span><span class="catmenu__label">{E(NV.N[L]["svc_cat"])}</span><span class="catmenu__arrow">{chev}</span></a></li>')
+        out.append(f'<li class="catmenu__item catmenu__item--svc has-children"><a href="services.html"><span class="catmenu__icon catmenu__icon--svc">{ic("monitor", 18)}</span><span class="catmenu__label">{E(NV.N[L]["svc_cat"])}</span><span class="catmenu__arrow">{chev}</span></a>'
+                   f'<button class="catmenu__toggle" aria-label="+">{chev}</button><ul class="catmenu__sub catmenu__casc">')
+        for gid, gic, gn, gd in SI.SERVICE_GROUPS:
+            items = [sv for sv in SI.SERVICES if sv[0] == gid]
+            out.append(f'<li class="has-children"><a href="services.html#{gid}"><span>{E(gn[L])}</span>{chev}</a><button class="catmenu__toggle" aria-label="+">{chev}</button>'
+                       f'<ul class="catmenu__sub catmenu__casc catmenu__casc--3">' +
+                       "".join(f'<li><a href="services.html#s-{slug(sv[5]["fr"][0])}"><span>{E(sv[5][L][0])}</span></a></li>' for sv in items) + '</ul></li>')
+        out.append('</ul></li>')
     for g in GROUPS:
         out.append(f'<li class="catmenu__item has-children"><a href="{gslug(g)}.html"><span class="catmenu__icon catmenu__icon--line">{ic(g[3], 20)}</span><span class="catmenu__label">{E(gname(g, L))}</span><span class="catmenu__arrow">{chev}</span></a>'
                    f'<button class="catmenu__toggle" aria-label="+">{chev}</button><ul class="catmenu__sub catmenu__casc">')
@@ -302,7 +309,7 @@ def services_cards(L, items, pre):
     out = []
     for (g, icon, pf, pe, pa, names, feat) in items:
         n, d = names[L]; price = {"fr": pf, "en": pe, "ar": pa}[L]
-        out.append(f'<article class="svc"><span class="svc__icon">{ic(icon, 26)}</span><h3 class="svc__name">{E(n)}</h3><p class="svc__desc">{E(d)}</p>'
+        out.append(f'<article class="svc" id="s-{slug(names["fr"][0])}"><span class="svc__icon">{ic(icon, 26)}</span><h3 class="svc__name">{E(n)}</h3><p class="svc__desc">{E(d)}</p>'
                    f'<div class="svc__foot"><span class="svc__price">{E(price)}</span><a href="#" class="svc__btn js-service" data-service="{E(n)}">{ic("whatsapp", 16)} {E(U["svc_ask"])}</a></div></article>')
     return "".join(out)
 
