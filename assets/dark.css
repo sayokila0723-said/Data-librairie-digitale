@@ -233,6 +233,9 @@ html[data-theme="dark"] .pack__tag { color: #a7b2bf }
 html[data-theme="dark"] .pack__price small { color: #a7b2bf }
 html[data-theme="dark"] .pack__incl { color: #e7ecf2 }
 html[data-theme="dark"] .vtab { border: 1.5px solid #2d3743; background: #161c24; color: #e7ecf2 }
+html[data-theme="dark"] .rtile { background: #161c24; border: 1px solid #2d3743; color: #e7ecf2 }
+html[data-theme="dark"] .rtile__img { background: #161c24 }
+html[data-theme="dark"] .rtile__n { color: #a7b2bf }
 /* --- ajustements manuels du mode nuit --- */
 html[data-theme="dark"] img { filter: brightness(.94); }
 html[data-theme="dark"] .nb-card__img, html[data-theme="dark"] .pgal, html[data-theme="dark"] .cline__img img { background: #fff; border-radius: 8px; }
@@ -273,3 +276,6 @@ html[data-theme="dark"] .pack__name, html[data-theme="dark"] .pack__incl { color
 html[data-theme="dark"] .packs__custom, html[data-theme="dark"] .packs__custom a { color: #8fe0a8; }
 html[data-theme="dark"] .vtab { background: #161c24; color: #e7ecf2; border-color: #33404d; }
 html[data-theme="dark"] .vtab.is-on { background: #f7c714; color: #001d3b; border-color: #f7c714; }
+html[data-theme="dark"] .rtile { background: #161c24; border-color: #2b3440; color: #e7ecf2; }
+html[data-theme="dark"] .rtile__img { background: #fff; }
+html[data-theme="dark"] .rtile__n { color: #9aa6b3; }
