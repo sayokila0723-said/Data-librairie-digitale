@@ -63,3 +63,7 @@ html[data-theme="dark"] .catmenu__sub3 a:hover, html[data-theme="dark"] .catmenu
 html[data-theme="dark"] .rtile__img--icon { background: #1c232d; color: #e7ecf2; }
 html[data-theme="dark"] .catmenu .catmenu__mega .catmenu__sub3 a, html[data-theme="dark"] .catmenu .catmenu__mega .mega__item a { color: #c9d1da !important; }
 html[data-theme="dark"] .catmenu .catmenu__mega .mega__head a { color: #e7ecf2 !important; }
+html[data-theme="dark"] .catmenu .catmenu__casc { background: #161c24; border-color: #2b3440; }
+html[data-theme="dark"] .catmenu .catmenu__casc > li + li { border-color: #232b35; }
+html[data-theme="dark"] .catmenu .catmenu__casc > li > a { color: #c9d1da !important; }
+html[data-theme="dark"] .catmenu .catmenu__casc > li:hover > a { background: #1c232d !important; }

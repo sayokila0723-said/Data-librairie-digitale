@@ -180,21 +180,20 @@ def head(L, title, root, desc=""):
             '<script>(function(){var t=null;try{t=localStorage.getItem("ld_theme")}catch(e){}if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark")})()</script></head>')
 
 def catmenu(L, root, services=False):
+    chev = ic("chevron", 14)
     out = ['<ul class="catmenu catmenu--groups">']
     if services:
-        out.append(f'<li class="catmenu__item catmenu__item--svc"><a href="services.html"><span class="catmenu__icon catmenu__icon--svc">{ic("monitor", 18)}</span><span class="catmenu__label">{E(NV.N[L]["svc_cat"])}</span><span class="catmenu__arrow">{ic("chevron", 14)}</span></a></li>')
+        out.append(f'<li class="catmenu__item catmenu__item--svc"><a href="services.html"><span class="catmenu__icon catmenu__icon--svc">{ic("monitor", 18)}</span><span class="catmenu__label">{E(NV.N[L]["svc_cat"])}</span><span class="catmenu__arrow">{chev}</span></a></li>')
     for g in GROUPS:
-        ents = g[5]
-        sgs = [e for e in ents if isinstance(e, tuple)]
-        out.append(f'<li class="catmenu__item has-children"><a href="{gslug(g)}.html"><span class="catmenu__icon catmenu__icon--line">{ic(g[3], 20)}</span><span class="catmenu__label">{E(gname(g, L))}</span><span class="catmenu__arrow">{ic("chevron", 14)}</span></a>'
-                   f'<button class="catmenu__toggle" aria-label="+">{ic("chevron", 14)}</button><ul class="catmenu__sub catmenu__mega{" catmenu__mega--flat" if not sgs else ""}">'
-                   f'<li class="mega__head"><a href="{gslug(g)}.html">{E(gname(g, L))} <small>›</small></a></li>')
-        for e in ents:
+        out.append(f'<li class="catmenu__item has-children"><a href="{gslug(g)}.html"><span class="catmenu__icon catmenu__icon--line">{ic(g[3], 20)}</span><span class="catmenu__label">{E(gname(g, L))}</span><span class="catmenu__arrow">{chev}</span></a>'
+                   f'<button class="catmenu__toggle" aria-label="+">{chev}</button><ul class="catmenu__sub catmenu__casc">')
+        for e in g[5]:
             if isinstance(e, tuple):
-                out.append(f'<li class="mega__col"><a class="mega__title" href="{eslug(e)}.html">{E(ename(e, L))}</a><button class="catmenu__toggle" aria-label="+">{ic("chevron", 14)}</button><ul class="catmenu__sub3">' +
-                           "".join(f'<li><a href="{cslug(x)}.html">{E(cname(x, L))}</a></li>' for x in e[3]) + '</ul></li>')
+                out.append(f'<li class="has-children"><a href="{eslug(e)}.html"><span>{E(ename(e, L))}</span>{chev}</a><button class="catmenu__toggle" aria-label="+">{chev}</button>'
+                           f'<ul class="catmenu__sub catmenu__casc catmenu__casc--3">' +
+                           "".join(f'<li><a href="{cslug(x)}.html"><span>{E(cname(x, L))}</span></a></li>' for x in e[3]) + '</ul></li>')
             else:
-                out.append(f'<li class="mega__item"><a href="{cslug(e)}.html">{E(cname(e, L))}</a></li>')
+                out.append(f'<li><a href="{cslug(e)}.html"><span>{E(cname(e, L))}</span></a></li>')
         out.append('</ul></li>')
     out.append('</ul>')
     return "".join(out)
