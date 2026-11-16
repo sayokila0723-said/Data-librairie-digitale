@@ -521,3 +521,8 @@
 .drawer .catmenu .catmenu__casc > li > a { padding: 10px 8px !important; }
 .drawer .catmenu .catmenu__casc > li > a svg { display: none; }
 .drawer .catmenu .catmenu__casc .catmenu__casc { grid-column: 1 / -1; }
+/* services : liste longue → défilement, et mise en évidence du service ciblé */
+.catmenu .catmenu__casc--3 { max-height: 70vh; overflow-y: auto; }
+.svc[id], .svc-group[id] { scroll-margin-top: 170px; }
+.svc:target { outline: 3px solid #f7c714; outline-offset: 3px; animation: svcFlash 1.6s ease 2; }
+@keyframes svcFlash { 50% { box-shadow: 0 0 0 10px rgba(247,199,20,.25); } }
