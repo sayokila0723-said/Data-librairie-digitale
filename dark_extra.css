@@ -46,3 +46,7 @@ html[data-theme="dark"] .findus { background: #0b2a4f; }
 html[data-theme="dark"] .nb-hbtn--map { background: #161c24 !important; color: #ff8a8a !important; border-color: #5a2a2a !important; }
 html[data-theme="dark"] .topbar__find, html[data-theme="dark"] .map-float { color: #fff !important; }
 html[data-theme="dark"] .findus__go, html[data-theme="dark"] .findus__alt { color: #fff !important; }
+html[data-theme="dark"] .nb-s2 { background: radial-gradient(520px 520px at 10% 110%, rgba(6,182,212,.3), transparent 65%), linear-gradient(125deg, #172554 0%, #1d4ed8 55%, #0e7490 100%) !important; }
+html[data-theme="dark"] .nb-s3 { background: linear-gradient(120deg, #0f2a22 0%, #12392c 100%) !important; }
+html[data-theme="dark"] .nb-s3 .nb-t { color: #e7ecf2; }
+html[data-theme="dark"] .wa-float, html[data-theme="dark"] .map-float { border-color: #161c24; }
