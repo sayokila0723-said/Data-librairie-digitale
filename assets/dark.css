@@ -236,6 +236,9 @@ html[data-theme="dark"] .vtab { border: 1.5px solid #2d3743; background: #161c24
 html[data-theme="dark"] .rtile { background: #161c24; border: 1px solid #2d3743; color: #e7ecf2 }
 html[data-theme="dark"] .rtile__img { background: #161c24 }
 html[data-theme="dark"] .rtile__n { color: #a7b2bf }
+html[data-theme="dark"] .nb-hbtn--map:hover { background: #3f1818 !important }
+html[data-theme="dark"] .findus__alt { border: 1.5px solid rgba(255,255,255,0.12) }
+html[data-theme="dark"] .findus__alt:hover { background: rgba(255,255,255,0.08) }
 /* --- ajustements manuels du mode nuit --- */
 html[data-theme="dark"] img { filter: brightness(.94); }
 html[data-theme="dark"] .nb-card__img, html[data-theme="dark"] .pgal, html[data-theme="dark"] .cline__img img { background: #fff; border-radius: 8px; }
@@ -280,3 +283,7 @@ html[data-theme="dark"] .rtile { background: #161c24; border-color: #2b3440; col
 html[data-theme="dark"] .rtile__img { background: #fff; }
 html[data-theme="dark"] .rtile__n { color: #9aa6b3; }
 html[data-theme="dark"] .plan__btn.plan__go { background: #2fa84f !important; color: #fff !important; }
+html[data-theme="dark"] .findus { background: #0b2a4f; }
+html[data-theme="dark"] .nb-hbtn--map { background: #161c24 !important; color: #ff8a8a !important; border-color: #5a2a2a !important; }
+html[data-theme="dark"] .topbar__find, html[data-theme="dark"] .map-float { color: #fff !important; }
+html[data-theme="dark"] .findus__go, html[data-theme="dark"] .findus__alt { color: #fff !important; }

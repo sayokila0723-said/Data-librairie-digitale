@@ -360,3 +360,48 @@
 .nb-s1__brand img { width: 100%; height: 100%; object-fit: cover; display: block; }
 @media (max-width: 720px) { .nb-s1__brand { width: 64px; height: 64px; } .nb-s1__brand img { width: 100%; } }
 .plan__btn.plan__go { background: #2fa84f !important; color: #fff !important; }
+
+/* ===== Nous trouver : bien visible partout ===== */
+.topbar__find { display: inline-flex; align-items: center; gap: 5px; margin-inline-start: 12px; padding: 3px 10px; border-radius: 20px; background: #d62828; color: #fff !important; font-weight: 700; font-size: 12.5px; text-decoration: none; }
+.topbar__find:hover { background: #b71f1f; }
+.nb-hbtn--map { color: #d62828 !important; border-color: #f3c2c2 !important; }
+.nb-hbtn--map:hover { background: #fff3f3 !important; }
+.map-float { position: fixed; bottom: 92px; right: 20px; z-index: 89; display: flex; align-items: center; gap: 0; height: 54px; min-width: 54px; padding: 0 14px; border-radius: 28px; background: #d62828; color: #fff !important; box-shadow: 0 10px 24px -8px rgba(214,40,40,.6); text-decoration: none; font-weight: 800; font-size: 14px; transition: transform .15s; }
+.map-float span { max-width: 0; overflow: hidden; white-space: nowrap; transition: max-width .25s, margin .25s; }
+.map-float:hover { transform: scale(1.04); }
+.map-float:hover span { max-width: 160px; margin-inline-start: 8px; }
+.rtl .map-float { right: auto; left: 20px; }
+.findus { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr); gap: 0; padding: 0 !important; overflow: hidden; border-radius: 14px; margin-top: 18px; background: #001d3b; }
+.findus__map { position: relative; min-height: 380px; background: #dfe6ee; }
+.findus__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.findus__overlay { position: absolute; inset: 0; }
+.findus__info { padding: 32px 30px; color: #fff; display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+.findus__pin { width: 58px; height: 58px; border-radius: 50%; background: #d62828; display: grid; place-items: center; color: #fff; box-shadow: 0 0 0 8px rgba(214,40,40,.18); }
+.findus__info h2 { margin: 8px 0 0; font-size: 28px; font-weight: 800; color: #fff; }
+.findus__addr { margin: 0; font-size: 16px; color: #e8edf3; }
+.findus__near { margin: 0; font-size: 14px; color: #f7c714; font-weight: 600; }
+.findus__go { margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 18px; border-radius: 10px; background: #2fa84f; color: #fff !important; font-weight: 800; font-size: 17px; text-decoration: none; box-shadow: 0 10px 22px -10px rgba(47,168,79,.8); }
+.findus__go:hover { background: #27913f; }
+.findus__row { display: flex; gap: 10px; flex-wrap: wrap; }
+.findus__alt { flex: 1 1 140px; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 11px 12px; border-radius: 10px; border: 1.5px solid rgba(255,255,255,.35); color: #fff !important; font-weight: 700; font-size: 14px; text-decoration: none; }
+.findus__alt:hover { background: rgba(255,255,255,.08); }
+@media (max-width: 900px) { .findus { grid-template-columns: 1fr; } .findus__map { min-height: 260px; } .findus__info { padding: 24px 20px; } .findus__info h2 { font-size: 23px; } }
+@media (max-width: 720px) {
+  .map-float { bottom: 84px; right: 16px; height: 50px; min-width: 50px; padding: 0 12px; }
+  .map-float span { max-width: 160px; margin-inline-start: 6px; }
+  .rtl .map-float { left: 16px; }
+  .nb-hbtn--map span { display: block !important; font-size: 11px; line-height: 1; }
+  .nova .nb-hbtn--map { width: auto; min-width: 54px; height: 50px; padding: 4px 8px; flex-direction: column; gap: 1px; }
+  .topbar__find { margin-inline-start: 8px; }
+}
+/* barre du haut : rien ne passe à la ligne */
+.topbar__contact > *, .topbar__contact a, .topbar__hours, .topbar__find, .theme-toggle { white-space: nowrap; }
+@media (max-width: 1440px) { .topbar__promo, .topbar .topbar__msg { display: none; } }
+@media (max-width: 720px) {
+  .nova .nb-hbtn--map { display: none; }
+  .topbar__hours { display: none; }
+}
+@media (max-width: 430px) {
+  .topbar .theme-toggle [class^="theme-toggle__lbl"] { display: none !important; }
+  .theme-toggle { padding: 0 8px; }
+}
