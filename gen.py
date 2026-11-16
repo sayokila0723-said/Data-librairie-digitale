@@ -359,7 +359,7 @@ def build_home(L):
           f'<div class="nb-s__text"><p class="nb-k">{E(V["s1_k"])}</p><h2 class="nb-t">{E(V["s1_t"])}</h2><p class="nb-y">{E(V["s1_y"])}</p><p class="nb-ribbon">{E(V["s1_b"])}</p>'
           f'<a class="nb-cta" href="boutique.html">{E(V["order_now"])}</a></div>'
           f'<div class="nb-collage">{nb_img(g("Cartable primaire 2 compartiments"), pre, "c1")}{nb_img(g("Crayons de couleur Maped Color'Peps — 12"), pre, "c2")}{nb_img(g("Cahier Essentiel 96 pages 10/10 A5 (17×22)"), pre, "c3")}{nb_img(g("Calculatrice scientifique Casio fx-82MS"), pre, "c4")}</div></div>')
-    chips = "".join(f'<span class="nb-chip">{ic(sv[1], 16)} {E(sv[5][L][0])}</span>' for sv in [x for x in SI.SERVICES if x[6]][:6])
+    chips = "".join(f'<span class="nb-chip">{ic(sv[1], 16)} {E(sv[5][L][0])}</span>' for sv in ([x for x in SI.SERVICES if x[5]["fr"][0].startswith("Titre de propriété")] + [x for x in SI.SERVICES if x[6]])[:6])
     s2 = (f'<div class="hero__slide nb-s2"><div class="nb-s__text"><p class="nb-k">{E(V["s2_k"])}</p><h2 class="nb-t">{E(V["s2_t"])}</h2><p class="nb-y">{E(V["s2_y"])}</p>'
           f'<a class="nb-cta" href="services.html">{E(V["s2_b"])}</a></div><div class="nb-chips">{chips}</div></div>')
     s3 = (f'<div class="hero__slide nb-s3"><div class="nb-s__text"><p class="nb-k">{E(V["s3_k"])}</p><h2 class="nb-t">{E(V["s3_t"])}</h2><p class="nb-y">{E(V["s3_y"])}</p>'
