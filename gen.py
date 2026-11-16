@@ -118,10 +118,12 @@ def cslug(fr): return "c-" + slug(fr)
 
 import groups as _GR
 GROUPS = _GR.GROUPS
+for _k, _v in _GR.NEW_SUBS.items(): IP.CATS.setdefault(_k, _v)
+def leaf(e): return isinstance(e, tuple) and len(e[3]) == 1 and not e[4]
 def gname(g, L): return g[{"fr": 0, "en": 1, "ar": 2}[L]]
 def gslug(g): return "g-" + slug(g[0])
 def eslug(e):  # entrée de famille : sous-groupe ou sous-rayon
-    if isinstance(e, tuple): return cslug(e[4]) if e[4] else "g-" + slug(e[0])
+    if isinstance(e, tuple): return cslug(e[4]) if e[4] else (cslug(e[3][0]) if len(e[3]) == 1 else "g-" + slug(e[0]))
     return cslug(e)
 def ename(e, L): return gname(e, L) if isinstance(e, tuple) else cname(e, L)
 def esubs(e): return e[3] if isinstance(e, tuple) else [e]
@@ -195,7 +197,9 @@ def catmenu(L, root, services=True):
         out.append(f'<li class="catmenu__item has-children"><a href="{gslug(g)}.html"><span class="catmenu__icon catmenu__icon--line">{ic(g[3], 20)}</span><span class="catmenu__label">{E(gname(g, L))}</span><span class="catmenu__arrow">{chev}</span></a>'
                    f'<button class="catmenu__toggle" aria-label="+">{chev}</button><ul class="catmenu__sub catmenu__casc">')
         for e in g[5]:
-            if isinstance(e, tuple):
+            if leaf(e):
+                out.append(f'<li><a href="{eslug(e)}.html"><span>{E(ename(e, L))}</span></a></li>')
+            elif isinstance(e, tuple):
                 out.append(f'<li class="has-children"><a href="{eslug(e)}.html"><span>{E(ename(e, L))}</span>{chev}</a><button class="catmenu__toggle" aria-label="+">{chev}</button>'
                            f'<ul class="catmenu__sub catmenu__casc catmenu__casc--3">' +
                            "".join(f'<li><a href="{cslug(x)}.html"><span>{E(cname(x, L))}</span></a></li>' for x in e[3]) + '</ul></li>')
@@ -505,10 +509,14 @@ def rgrid(L, names, pre, sub=True):
 
 def gtiles(L, ents, pre):
     U = SI.UI[L]
-    def img(e): return cat_first_img(e[4]) if isinstance(e, tuple) and e[4] else cat_first_img(esubs(e)[0])
+    def img(e):
+        if isinstance(e, tuple) and e[4]: return cat_first_img(e[4])
+        for x in esubs(e):
+            if cat_first_img(x): return cat_first_img(x)
+        return ""
     def n(e): return sum(1 for p in P if p["sub"] in esubs(e))
     return ('<div class="rgrid">' + "".join(
-        f'<a class="rtile" href="{eslug(e)}.html"><span class="rtile__img"><img src="{pre}{img(e)}" alt="" loading="lazy" width="200" height="200"></span>'
+        f'<a class="rtile" href="{eslug(e)}.html">' + (f'<span class="rtile__img"><img src="{pre}{img(e)}" alt="" loading="lazy" width="200" height="200"></span>' if img(e) else f'<span class="rtile__img rtile__img--icon">{ic("grid", 40)}</span>') +
         f'<span class="rtile__name">{E(ename(e, L))}</span><span class="rtile__n">{n(e)} {E(U["products"])}</span></a>' for e in ents) + '</div>')
 
 def build_groups(L):
@@ -516,14 +524,32 @@ def build_groups(L):
     for g in GROUPS:
         build_listing(L, gslug(g), gname(g, L), g[4][k], [p for p in P if p["sub"] in gsubs(g)], gtiles(L, g[5], pre))
         for e in g[5]:
-            if isinstance(e, tuple) and not e[4]:
+            if isinstance(e, tuple) and not e[4] and len(e[3]) > 1:
                 back = (f'<div class="subchips"><a href="{gslug(g)}.html">← {E(gname(g, L))}</a>' +
                         "".join(f'<a href="{cslug(x)}.html">{E(cname(x, L))}</a>' for x in e[3]) + '</div>')
                 build_listing(L, eslug(e), ename(e, L), "", [p for p in P if p["sub"] in e[3]], back if len(e[3]) > 1 else back)
 
+SOON = {"fr": ("Bientôt en ligne", "Ces articles sont disponibles en magasin. Demandez-les sur WhatsApp : nous vous répondons avec les modèles et les prix.", "Demander sur WhatsApp"),
+        "en": ("Coming soon online", "These items are available in store. Ask us on WhatsApp for models and prices.", "Ask on WhatsApp"),
+        "ar": ("قريباً على الموقع", "هذه المنتجات متوفرة في المتجر. اسألنا عبر واتساب عن الأنواع والأسعار.", "اسأل عبر واتساب")}
+
+def build_empty_subs(L):
+    known = {x for t in TOPS for x in SUBS[t]}
+    done = set()
+    for g in GROUPS:
+        for e in g[5]:
+            for x in esubs(e):
+                if x in known or x in done: continue
+                done.add(x); t, d, b = SOON[L]
+                box = (f'<div class="soon-box">{ic("store", 34)}<h2>{E(t)}</h2><p>{E(d)}</p>'
+                       f'<a class="btn btn--whatsapp js-service" href="#" data-service="{E(cname(x, L))}">{ic("whatsapp", 18)} {E(b)}</a>'
+                       f'<a class="soon-box__back" href="{gslug(g)}.html">← {E(gname(g, L))}</a></div>')
+                build_listing(L, cslug(x), cname(x, L), "", [], box)
+
 def build_categories(L):
     U = SI.UI[L]; pre = "" if L == "fr" else "../"
     build_groups(L)
+    build_empty_subs(L)
     _gt = ('<div class="rgrid">' + "".join(
         f'<a class="rtile" href="{gslug(g)}.html"><span class="rtile__img rtile__img--icon">{ic(g[3], 54)}</span>'
         f'<span class="rtile__name">{E(gname(g, L))}</span><span class="rtile__n">{sum(1 for p in P if p["sub"] in gsubs(g))} {E(U["products"])}</span></a>' for g in GROUPS) + '</div>')

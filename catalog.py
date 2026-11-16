@@ -342,3 +342,8 @@ if __name__ == "__main__":
     print(len(P), "produits,", len(C), "sous-catégories")
     for p in P:
         assert p["sale"] == "" or float(p["sale"]) < float(p["regular"]), p
+
+# Répartition façon Nova Bureau : « Tableaux & cachets » -> « Tableaux & accessoires » + « Cachets & dateurs »
+_tc = C.pop("Bureau & Organisation > Tableaux & cachets", [])
+C["Bureau & Organisation > Tableaux & accessoires"] = [x for x in _tc if not x[0].startswith("Tampon")]
+C["Bureau & Organisation > Cachets & dateurs"] = [x for x in _tc if x[0].startswith("Tampon")]

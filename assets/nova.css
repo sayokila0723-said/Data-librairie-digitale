@@ -526,3 +526,9 @@
 .svc[id], .svc-group[id] { scroll-margin-top: 170px; }
 .svc:target { outline: 3px solid #f7c714; outline-offset: 3px; animation: svcFlash 1.6s ease 2; }
 @keyframes svcFlash { 50% { box-shadow: 0 0 0 10px rgba(247,199,20,.25); } }
+.soon-box { background: #fff; border: 1px dashed #c9d3de; border-radius: 14px; padding: 34px 24px; text-align: center; display: grid; justify-items: center; gap: 10px; max-width: 620px; margin: 10px auto 20px; color: #001d3b; }
+.soon-box h2 { margin: 4px 0 0; font-size: 22px; } .soon-box p { margin: 0; color: #5d6b7b; }
+.soon-box svg:first-child { color: #2fa84f; }
+.soon-box__back { font-weight: 700; color: #2fa84f !important; }
+html[data-theme="dark"] .soon-box { background: #161c24; border-color: #33404d; color: #e7ecf2; }
+.soon-box + .woocommerce-result-count { display: none; }
