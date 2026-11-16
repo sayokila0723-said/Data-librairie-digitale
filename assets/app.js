@@ -298,3 +298,19 @@
     });
   });
 })();
+
+/* ===== Bannière : une nouvelle palette de couleurs à chaque passage ===== */
+(function () {
+  var slides = document.querySelectorAll('.nb-hero .hero__slide');
+  if (!slides.length) return;
+  var N = 4;
+  slides.forEach(function (s) {
+    s.dataset.pal = '0';
+    var was = s.classList.contains('is-active');
+    new MutationObserver(function () {
+      var now = s.classList.contains('is-active');
+      if (now && !was) s.dataset.pal = String((parseInt(s.dataset.pal, 10) + 1) % N);
+      was = now;
+    }).observe(s, { attributes: true, attributeFilter: ['class'] });
+  });
+})();

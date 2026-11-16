@@ -50,3 +50,9 @@ html[data-theme="dark"] .nb-s2 { background: radial-gradient(520px 520px at 10% 
 html[data-theme="dark"] .nb-s3 { background: linear-gradient(120deg, #0f2a22 0%, #12392c 100%) !important; }
 html[data-theme="dark"] .nb-s3 .nb-t { color: #e7ecf2; }
 html[data-theme="dark"] .wa-float, html[data-theme="dark"] .map-float { border-color: #161c24; }
+html[data-theme="dark"] .nb-s2[data-pal="1"] { background: linear-gradient(125deg, #2e1065 0%, #6d28d9 55%, #9d174d 100%) !important; }
+html[data-theme="dark"] .nb-s2[data-pal="2"] { background: linear-gradient(125deg, #022c22 0%, #047857 55%, #0f766e 100%) !important; }
+html[data-theme="dark"] .nb-s2[data-pal="3"] { background: linear-gradient(125deg, #450a0a 0%, #9a3412 55%, #b45309 100%) !important; }
+html[data-theme="dark"] .nb-s3[data-pal="1"] { background: linear-gradient(120deg, #2a1a10 0%, #3d2414 100%) !important; }
+html[data-theme="dark"] .nb-s3[data-pal="2"] { background: linear-gradient(120deg, #0f1d33 0%, #15284a 100%) !important; }
+html[data-theme="dark"] .nb-s3[data-pal="3"] { background: linear-gradient(120deg, #1d1236 0%, #2a1a4d 100%) !important; }
