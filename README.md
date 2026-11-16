@@ -1,6 +1,6 @@
-# Librairie Digitale
+# Data Librairie digitale
 
-Site de la librairie-papeterie **Librairie Digitale** — 514 Charaf, Mag 2, Marrakech.
+Site de la librairie-papeterie **Data Librairie digitale** — 514 Charaf, Mag 2, Marrakech.
 Trilingue (français, English, العربية), catalogue de 164 produits, services digitaux, panier et bon de commande via WhatsApp, mode nuit.
 
 ## Technique
