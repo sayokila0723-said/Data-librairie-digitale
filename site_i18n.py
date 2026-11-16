@@ -42,7 +42,7 @@ SERVICES = [
      {"fr": ("Extrait de casier judiciaire en ligne", "Demande sur la plateforme officielle et impression du document obtenu."),
       "en": ("Criminal record extract online", "Request on the official platform and printing of the document."),
       "ar": ("طلب السجل العدلي عبر الإنترنت", "تقديم الطلب على المنصة الرسمية وطباعة الوثيقة.")}, True),
-    ("admin", "home2", "50 Dhs + frais officiels", "50 Dhs + official fees", "50 درهم + الرسوم الرسمية",
+    ("admin", "home2", "120 Dhs", "120 Dhs", "120 درهم",
      {"fr": ("Titre de propriété (certificat foncier)", "Demande en ligne du certificat de propriété auprès de la Conservation foncière (ANCFCC), suivi et impression du document."),
       "en": ("Property title (land certificate)", "Online request for the property certificate from the Land Registry (ANCFCC), follow-up and printing of the document."),
       "ar": ("شهادة الملكية (الرسم العقاري)", "طلب شهادة الملكية عبر الإنترنت لدى المحافظة العقارية (ANCFCC)، مع التتبع وطباعة الوثيقة.")}, False),
