@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.bak
+*_old.py
+.env
+.env.*
+*.pem
+*.key
+# fichiers de travail
+chk.jpg
+sheet*.jpg
+real/vis_*.png
+real/boxes.json
+imgs-var/
