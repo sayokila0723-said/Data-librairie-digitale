@@ -532,3 +532,61 @@
 .soon-box__back { font-weight: 700; color: #2fa84f !important; }
 html[data-theme="dark"] .soon-box { background: #161c24; border-color: #33404d; color: #e7ecf2; }
 .soon-box + .woocommerce-result-count { display: none; }
+
+/* ===================== RESPONSIVE : toutes largeurs (nov. 2026) ===================== */
+html, body { overflow-x: clip; }
+img, video, iframe { max-width: 100%; }
+/* Très grands écrans : le site s'élargit */
+@media (min-width: 1800px) { .nova .container, .nb-wrap { max-width: 1680px; } .nb-block ul.products.carousel > li { flex-basis: calc((100% - 18px * 5) / 6) !important; } }
+@media (min-width: 2300px) { .nova .container, .nb-wrap { max-width: 1960px; } html { font-size: 17px; } }
+/* Tablette : la recherche passe sur sa propre ligne, pleine largeur */
+@media (max-width: 1100px) {
+  .nova .header__inner { flex-wrap: wrap; row-gap: 12px; }
+  .nova .search { order: 3; flex: 1 1 100%; max-width: none; }
+  .nova .header__logo { flex: 1; }
+}
+@media (min-width: 721px) and (max-width: 1100px) { .nb-hbtn--map span, .nb-hbtn--cart span { display: inline !important; } }
+/* Barre du haut : jamais plus large que l'écran */
+.topbar__inner { min-width: 0; }
+.topbar__contact { min-width: 0; flex-wrap: nowrap; overflow: hidden; }
+@media (max-width: 480px) {
+  .topbar__inner { justify-content: space-between !important; gap: 6px; padding-left: 10px; padding-right: 10px; }
+  .topbar__contact { gap: 8px !important; }
+  .topbar__find { margin-inline-start: 0; padding: 3px 8px; }
+  .theme-toggle { margin-inline-start: 6px; padding: 0 7px; }
+}
+@media (max-width: 360px) {
+  .topbar__contact > a[href^="tel:"] { font-size: 0; gap: 0; }
+  .topbar__contact > a[href^="tel:"] svg { width: 16px; height: 16px; }
+  .text-logo__txt strong { font-size: 16px !important; }
+  .text-logo__txt small { display: none; }
+}
+/* Pagination : retour à la ligne au lieu de déborder */
+.woocommerce-pagination ul.page-numbers { display: flex !important; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 100%; border: 0 !important; }
+.woocommerce-pagination ul.page-numbers li { border: 0 !important; float: none !important; }
+@media (max-width: 600px) { .woocommerce-pagination ul.page-numbers li a, .woocommerce-pagination ul.page-numbers li span { min-width: 36px; height: 36px; padding: 0 6px !important; display: grid; place-items: center; } }
+/* Étapes du bon de commande : lisibles sur petit écran */
+@media (max-width: 480px) {
+  .costeps { gap: 4px; } .costeps li { flex-direction: column; text-align: center; gap: 4px; padding: 8px 4px; font-size: 11px; line-height: 1.2; }
+}
+/* Grilles produits : nombre de colonnes selon la largeur */
+@media (max-width: 380px) { ul.products:not(.carousel) { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; } }
+@media (min-width: 601px) and (max-width: 900px) { ul.products:not(.carousel) { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; } }
+/* Fiche produit : image et infos l'une sous l'autre sur tablette portrait */
+@media (max-width: 820px) { .woocommerce div.product { display: block; } .woocommerce div.product div.images, .woocommerce div.product div.summary { width: 100% !important; float: none !important; } }
+/* Boutons flottants : plus discrets sur téléphone */
+@media (max-width: 480px) {
+  .wa-float, .map-float { width: 46px !important; height: 46px !important; border-radius: 13px !important; right: 10px; }
+  .rtl .wa-float, .rtl .map-float { left: 10px; right: auto; }
+  .wa-float { bottom: 12px; } .map-float { bottom: 66px; }
+  .wa-float svg { width: 24px; height: 24px; } .map-float svg { width: 22px; height: 22px; }
+}
+/* Méga-menu / cascade : jamais hors écran sur ordinateur moyen */
+@media (min-width: 1025px) and (max-width: 1280px) { .catmenu .catmenu__casc { width: 250px; min-width: 250px; } }
+/* Tableaux de contenu : défilement horizontal si trop larges */
+.entry-content table { display: block; max-width: 100%; overflow-x: auto; }
+@media (min-width: 721px) and (max-width: 1100px) {
+  .nova .nb-hbtn--map, .nova .nb-hbtn--cart { width: auto !important; min-width: 0; padding: 0 12px !important; gap: 6px; flex-direction: row; }
+}
+@media (max-width: 1100px) { .nb-s1__brand { position: absolute !important; top: 16px; left: 16px; } .rtl .nb-s1__brand { left: auto; right: 16px; } .nb-s1 .nb-k { margin-top: 70px; } }
+@media (max-width: 720px) { .nb-s1 .nb-k { margin-top: 56px; } }
