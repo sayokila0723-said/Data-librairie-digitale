@@ -388,7 +388,7 @@ def build_home(L):
     by = {p["name"]: p for p in P}
     g = lambda n: by[n]
     # bandeaux (slider)
-    s1 = (f'<div class="hero__slide nb-s1 is-active"><div class="nb-s1__blob"></div><div class="nb-s1__brand"><img src="{pre}img/logo-data.png" alt="{E(U["brand"])}"></div>'
+    s1 = (f'<div class="hero__slide nb-s1 is-active"><div class="nb-s1__blob"></div>'
           f'<div class="nb-s__text"><p class="nb-k">{E(V["s1_k"])}</p><h2 class="nb-t">{E(V["s1_t"])}</h2><p class="nb-y">{E(V["s1_y"])}</p><p class="nb-ribbon">{E(V["s1_b"])}</p>'
           f'<a class="nb-cta" href="boutique.html">{E(V["order_now"])}</a></div>'
           f'<div class="nb-collage">{nb_img(g("Cartable primaire 2 compartiments"), pre, "c1")}{nb_img(g("Crayons de couleur Maped Color'Peps — 12"), pre, "c2")}{nb_img(g("Cahier Essentiel 96 pages 10/10 A5 (17×22)"), pre, "c3")}{nb_img(g("Calculatrice scientifique Casio fx-82MS"), pre, "c4")}</div></div>')
