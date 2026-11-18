@@ -594,3 +594,7 @@ img, video, iframe { max-width: 100%; }
 /* Services sans prix */
 .svc__foot{justify-content:flex-end}
 .svc__foot .svc__btn{margin-inline-start:auto}
+
+/* Bannière sans logo */
+.nb-s1__brand{display:none!important}
+.nb-s1 .nb-k{margin-top:0!important}
