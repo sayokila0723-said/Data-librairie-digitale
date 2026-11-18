@@ -314,7 +314,7 @@ def services_cards(L, items, pre):
     for (g, icon, pf, pe, pa, names, feat) in items:
         n, d = names[L]; price = {"fr": pf, "en": pe, "ar": pa}[L]
         out.append(f'<article class="svc" id="s-{slug(names["fr"][0])}"><span class="svc__icon">{ic(icon, 26)}</span><h3 class="svc__name">{E(n)}</h3><p class="svc__desc">{E(d)}</p>'
-                   f'<div class="svc__foot"><span class="svc__price">{E(price)}</span><a href="#" class="svc__btn js-service" data-service="{E(n)}">{ic("whatsapp", 16)} {E(U["svc_ask"])}</a></div></article>')
+                   f'<div class="svc__foot"><a href="#" class="svc__btn js-service" data-service="{E(n)}">{ic("whatsapp", 16)} {E(U["svc_ask"])}</a></div></article>')
     return "".join(out)
 
 def packs_block(L, pre, home=False):
@@ -325,7 +325,7 @@ def packs_block(L, pre, home=False):
         li = "".join(f'<li>{ic("check", 16)} {E(x)}</li>' for x in items)
         out.append(f'<article class="pack{" pack--best" if best else ""}" id="{pid}">' + (f'<span class="pack__badge">{E(K["best"])}</span>' if best else "") +
                    f'<span class="pack__ic">{ic(icon, 28)}</span><h3 class="pack__name">{E(n)}</h3><p class="pack__tag">{E(tag)}</p>'
-                   f'<p class="pack__price"><small>{E(K["from_"])}</small> <strong dir="auto">{E(price)}</strong></p><p class="pack__incl">{E(K["incl"])}</p><ul class="pack__list">{li}</ul>'
+                   f'<p class="pack__incl">{E(K["incl"])}</p><ul class="pack__list">{li}</ul>'
                    f'<a href="#" class="btn pack__btn js-service" data-service="{E(n)}">{ic("whatsapp", 18)} {E(K["ask"])}</a></article>')
     head_ = (f'<header class="packs__head"><h2>{E(K["packs_t"])}</h2><p>{E(K["packs_s"])}</p></header>')
     return (f'<section class="packs{" packs--home container" if home else ""}">{head_}<div class="packs__grid">{"".join(out)}</div>'
@@ -643,7 +643,7 @@ def build_pages(L):
     # index de recherche
     idx = [{"t": "p", "n": pname(p, L), "u": p["slug"] + ".html", "i": p["img"], "id": p["sku"], "v": f'{float(p["sale"] or p["regular"]):.2f}', "p": money(p["sale"] or p["regular"], L),
             "o": money(p["regular"], L) if p["sale"] else "", "c": slug(p["top"]), "k": cname(p["top"], L) + " " + cname(p["sub"], L) + " " + p["name"] + " " + " ".join(cl(v["color"], L) + " " + cl(v["color"], "fr") for v in p.get("variants", []))} for p in P]
-    idx += [{"t": "s", "n": s[5][L][0], "d": s[5][L][1], "p": {"fr": s[2], "en": s[3], "ar": s[4]}[L], "k": s[5]["fr"][0]} for s in SI.SERVICES]
+    idx += [{"t": "s", "n": s[5][L][0], "d": s[5][L][1], "k": s[5]["fr"][0]} for s in SI.SERVICES]
     from web_services import PACKS
     idx += [{"t": "s", "n": d_[L][0], "d": d_[L][1] + " " + ", ".join(d_[L][2]), "p": pr[{"fr": 0, "en": 1, "ar": 2}[L]], "k": d_["fr"][0] + " pack"} for _, _, pr, _, d_ in PACKS]
     d = OUT if L == "fr" else os.path.join(OUT, L)
