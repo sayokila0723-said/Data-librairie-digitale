@@ -590,3 +590,7 @@ img, video, iframe { max-width: 100%; }
 }
 @media (max-width: 1100px) { .nb-s1__brand { position: absolute !important; top: 16px; left: 16px; } .rtl .nb-s1__brand { left: auto; right: 16px; } .nb-s1 .nb-k { margin-top: 70px; } }
 @media (max-width: 720px) { .nb-s1 .nb-k { margin-top: 56px; } }
+
+/* Services sans prix */
+.svc__foot{justify-content:flex-end}
+.svc__foot .svc__btn{margin-inline-start:auto}

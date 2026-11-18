@@ -116,7 +116,7 @@
       var S = cat ? [] : D.filter(function (x) { return x.t === 's' && w.length && hit(x); });
       document.getElementById('titre-recherche').textContent = q ? (T.results_for + ' « ' + q + ' » (' + (P.length + S.length) + ')') : T.all_products;
       box.innerHTML = P.map(function (p) { return '<li class="product"><a class="woocommerce-LoopProduct-link" href="' + p.u + '"><img src="' + ROOT + p.i + '" alt="" loading="lazy"><h2 class="woocommerce-loop-product__title">' + esc(p.n) + '</h2><span class="price">' + (p.o ? '<del>' + p.o + '</del> <ins>' + p.p + '</ins>' : p.p) + '</span><span class="stock-badge in">' + esc(T.in_stock) + '</span></a><a href="#" class="button add_to_cart_button js-order" data-name="' + esc(p.n) + '" data-price="' + esc(p.p) + '">' + esc(T.order) + '</a></li>'; }).join('');
-      document.getElementById('resultats-services').innerHTML = S.map(function (s) { return '<article class="svc"><h3 class="svc__name">' + esc(s.n) + '</h3><p class="svc__desc">' + esc(s.d) + '</p><div class="svc__foot"><span class="svc__price">' + esc(s.p) + '</span><a href="#" class="svc__btn js-service" data-service="' + esc(s.n) + '">WhatsApp</a></div></article>'; }).join('');
+      document.getElementById('resultats-services').innerHTML = S.map(function (s) { return '<article class="svc"><h3 class="svc__name">' + esc(s.n) + '</h3><p class="svc__desc">' + esc(s.d) + '</p><div class="svc__foot"><a href="#" class="svc__btn js-service" data-service="' + esc(s.n) + '">WhatsApp</a></div></article>'; }).join('');
       if (!P.length && !S.length) box.innerHTML = '<p>' + esc(T.no_result) + '</p>';
     });
   }
