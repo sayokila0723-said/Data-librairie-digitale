@@ -342,3 +342,41 @@
       if (btn) { btn.style.removeProperty('--bx'); btn.style.removeProperty('--by'); } });
   });
 })();
+
+/* Tuiles catégories : les panneaux changent de place en tournant (sens horaire) */
+(function () {
+  var box = document.querySelector('.nb-tiles'); if (!box || !box.animate) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var rtl = document.documentElement.dir === 'rtl', hover = false, visible = true, busy = false;
+  box.addEventListener('mouseenter', function () { hover = true; });
+  box.addEventListener('mouseleave', function () { hover = false; });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }, { threshold: 0.3 }).observe(box);
+  function step() {
+    if (busy || hover || !visible || document.hidden) return;
+    var tiles = Array.prototype.slice.call(box.children); if (tiles.length < 3) return;
+    var first = tiles.map(function (t) { return t.getBoundingClientRect(); });
+    var cx = 0, cy = 0; first.forEach(function (r) { cx += r.left + r.width / 2; cy += r.top + r.height / 2; }); cx /= first.length; cy /= first.length;
+    // ordre des emplacements autour du centre (sens horaire à l'écran)
+    var ring = first.map(function (r, i) { return { i: i, a: Math.atan2(r.top + r.height / 2 - cy, r.left + r.width / 2 - cx) }; })
+      .sort(function (p, q) { return rtl ? q.a - p.a : p.a - q.a; }).map(function (o) { return o.i; });
+    var next = new Array(tiles.length);
+    ring.forEach(function (slot, k) { next[ring[(k + 1) % ring.length]] = tiles[slot]; });
+    busy = true; box.classList.add('is-rotating');
+    next.forEach(function (t) { box.appendChild(t); });
+    var done = 0;
+    next.forEach(function (t, newSlot) {
+      var oldSlot = tiles.indexOf(t), a = first[oldSlot], b = t.getBoundingClientRect();
+      var dx = (a.left + a.width / 2) - (b.left + b.width / 2), dy = (a.top + a.height / 2) - (b.top + b.height / 2);
+      // point milieu poussé vers l'extérieur pour dessiner un arc
+      var mx = dx / 2, my = dy / 2, ox = (b.left + b.width / 2 + mx) - cx, oy = (b.top + b.height / 2 + my) - cy, ol = Math.hypot(ox, oy) || 1, bow = Math.hypot(dx, dy) * 0.16;
+      t.classList.add('is-moving');
+      var anim = t.animate([
+        { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(1)' },
+        { transform: 'translate(' + (mx + ox / ol * bow) + 'px,' + (my + oy / ol * bow) + 'px) scale(.92) rotate(' + (rtl ? -4 : 4) + 'deg)', offset: .5 },
+        { transform: 'translate(0,0) scale(1)' }
+      ], { duration: 1200, easing: 'cubic-bezier(.65,0,.35,1)', delay: newSlot * 40 });
+      anim.onfinish = anim.oncancel = function () { t.classList.remove('is-moving'); if (++done === next.length) { busy = false; box.classList.remove('is-rotating'); } };
+    });
+  }
+  setInterval(step, 5000);
+})();

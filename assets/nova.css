@@ -688,13 +688,17 @@ html[data-theme="dark"] .nb-tile--list .nb-tile__t { color: #9cc3ef; }
 @media (min-width: 1201px) {
   .nb-tiles { grid-template-columns: 1.1fr 1fr 1fr 1fr; grid-auto-rows: 210px; }
   .nb-tile { height: auto; }
-  .nb-tile--svc { grid-row: span 2; }
-  .nb-tile--dark { grid-column: span 2; }
+  .nb-tiles > .nb-tile:nth-child(1) { grid-row: span 2; }
+  .nb-tiles > .nb-tile:nth-child(2) { grid-column: span 2; }
   .nb-tile__img { width: auto; height: 70%; bottom: 14px; }
-  .nb-tile--dark .nb-tile__img { height: 78%; inset-inline-end: 40px; }
-  .nb-tile--svc .nb-tile__logo { width: 170px; }
-  .nb-tile--svc .nb-tile__t { font-size: 28px; }
-  .nb-tile--svc .nb-tile__s { font-size: 15px; }
+  .nb-tiles > .nb-tile:nth-child(1) .nb-tile__img { height: auto; width: 62%; bottom: 22px; }
+  .nb-tiles > .nb-tile:nth-child(2) .nb-tile__img { height: 78%; inset-inline-end: 40px; }
+  .nb-tiles > .nb-tile:nth-child(1) .nb-tile__t { font-size: 32px; }
+  .nb-tile--svc:nth-child(1) .nb-tile__logo { width: 170px; }
+  .nb-tile--svc:nth-child(1) .nb-tile__t { font-size: 28px; }
+  .nb-tile--svc:nth-child(1) .nb-tile__s { font-size: 15px; }
+  .nb-tile--svc:not(:nth-child(1)) .nb-tile__logo { width: 96px; margin-bottom: 6px; }
+  .nb-tiles > .nb-tile--list:nth-child(1) .nb-tile__t { font-size: 30px; }
 }
 /* 2. Projecteur lumineux qui suit la souris */
 .nb-tile__spot { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0; transition: opacity .35s;
@@ -717,3 +721,8 @@ html[data-theme="dark"] .nb-tile--list .nb-tile__t { color: #9cc3ef; }
   }
 }
 @media (prefers-reduced-motion: reduce) { .nb-tile__b { translate: none !important; } .nb-tile__t { animation: none !important; } }
+
+/* Rotation circulaire des tuiles */
+.nb-tiles.is-rotating .nb-tile { pointer-events: none; }
+.nb-tile.is-moving { z-index: 5; box-shadow: 0 40px 60px -25px rgba(15,23,42,.55); }
+.nb-tile--svc::before { inset: auto; left: 50%; top: 50%; width: 260%; aspect-ratio: 1; translate: -50% -50%; }
