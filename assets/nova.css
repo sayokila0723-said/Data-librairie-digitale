@@ -726,3 +726,59 @@ html[data-theme="dark"] .nb-tile--list .nb-tile__t { color: #9cc3ef; }
 .nb-tiles.is-rotating .nb-tile { pointer-events: none; }
 .nb-tile.is-moving { z-index: 5; box-shadow: 0 40px 60px -25px rgba(15,23,42,.55); }
 .nb-tile--svc::before { inset: auto; left: 50%; top: 50%; width: 260%; aspect-ratio: 1; translate: -50% -50%; }
+
+/* ===== Couleurs « aurore » : dégradés maillés (mesh gradients) ===== */
+.nb-tile--dark { background-color: #0f172a !important; background-image:
+  radial-gradient(at 15% 20%, rgba(99,102,241,.75) 0, transparent 45%),
+  radial-gradient(at 85% 85%, rgba(14,165,233,.65) 0, transparent 50%),
+  radial-gradient(at 70% 10%, rgba(168,85,247,.55) 0, transparent 40%),
+  linear-gradient(135deg, #0f172a, #1e1b4b) !important; }
+.nb-tile--orange { background-color: #f97316 !important; background-image:
+  radial-gradient(at 10% 15%, rgba(250,204,21,.95) 0, transparent 45%),
+  radial-gradient(at 90% 90%, rgba(236,72,153,.8) 0, transparent 50%),
+  radial-gradient(at 80% 15%, rgba(251,146,60,.9) 0, transparent 40%),
+  linear-gradient(135deg, #fb923c, #f43f5e) !important; }
+.nb-tile--blue { background-color: #2563eb !important; background-image:
+  radial-gradient(at 15% 15%, rgba(34,211,238,.85) 0, transparent 45%),
+  radial-gradient(at 85% 85%, rgba(124,58,237,.75) 0, transparent 50%),
+  radial-gradient(at 80% 10%, rgba(59,130,246,.9) 0, transparent 40%),
+  linear-gradient(135deg, #3b82f6, #4f46e5) !important; }
+.nb-tile--red { background-color: #e11d48 !important; background-image:
+  radial-gradient(at 15% 15%, rgba(251,146,60,.85) 0, transparent 45%),
+  radial-gradient(at 85% 85%, rgba(162,28,175,.75) 0, transparent 50%),
+  radial-gradient(at 80% 10%, rgba(244,63,94,.9) 0, transparent 40%),
+  linear-gradient(135deg, #f43f5e, #be185d) !important; }
+.nb-tile--dark, .nb-tile--orange, .nb-tile--blue, .nb-tile--red { background-size: 160% 160% !important; animation: nbMesh 12s ease-in-out infinite alternate; }
+.nb-tile:nth-child(odd) { animation-duration: 15s; }
+@keyframes nbMesh { 0% { background-position: 0% 0%; } 50% { background-position: 100% 30%; } 100% { background-position: 40% 100%; } }
+/* tuiles claires : pastel irisé */
+.nb-tile--list { background-color: #effbf5 !important; background-image:
+  radial-gradient(rgba(13,79,168,.10) 1.5px, transparent 1.6px),
+  radial-gradient(at 0% 0%, rgba(167,243,208,.9) 0, transparent 50%),
+  radial-gradient(at 100% 100%, rgba(191,219,254,.9) 0, transparent 55%),
+  radial-gradient(at 100% 0%, rgba(254,240,138,.6) 0, transparent 45%) !important;
+  background-size: 18px 18px, 100% 100%, 100% 100%, 100% 100% !important; }
+.nb-tile--svc .nb-tile__orb { background:
+  radial-gradient(at 0% 0%, rgba(254,240,138,.55) 0, transparent 50%),
+  radial-gradient(at 100% 100%, rgba(191,219,254,.7) 0, transparent 55%),
+  radial-gradient(at 100% 0%, rgba(233,213,255,.6) 0, transparent 45%), #fff; }
+html[data-theme="dark"] .nb-tile--list { background-color: #0f2a2a !important; background-image:
+  radial-gradient(rgba(156,195,239,.12) 1.5px, transparent 1.6px),
+  radial-gradient(at 0% 0%, rgba(16,185,129,.35) 0, transparent 50%),
+  radial-gradient(at 100% 100%, rgba(59,130,246,.35) 0, transparent 55%) !important; }
+html[data-theme="dark"] .nb-tile--svc .nb-tile__orb { background:
+  radial-gradient(at 0% 0%, rgba(250,204,21,.18) 0, transparent 50%),
+  radial-gradient(at 100% 100%, rgba(59,130,246,.3) 0, transparent 55%), #16314f; }
+/* halo d'aurore derrière la mosaïque */
+.nb-tiles { position: relative; isolation: isolate; }
+.nb-tiles::before { content: ""; position: absolute; inset: -40px -20px; z-index: -1; pointer-events: none; filter: blur(50px); opacity: .45;
+  background: radial-gradient(40% 50% at 20% 40%, #a5b4fc, transparent 70%), radial-gradient(35% 45% at 60% 70%, #fbcfe8, transparent 70%),
+  radial-gradient(35% 45% at 90% 30%, #a7f3d0, transparent 70%); animation: nbAurora 14s ease-in-out infinite alternate; }
+@keyframes nbAurora { to { transform: translateX(30px) scale(1.06); filter: blur(60px) hue-rotate(40deg); } }
+html[data-theme="dark"] .nb-tiles::before { opacity: .25; }
+@media (prefers-reduced-motion: reduce) { .nb-tiles::before { animation: none; } }
+.nb-tile--list { animation: nbDots2 18s linear infinite !important; }
+@keyframes nbDots2 { from { background-position: 0 0, 0 0, 0 0, 0 0; } to { background-position: 180px 90px, 0 0, 0 0, 0 0; } }
+html[data-theme="dark"] .nb-tile--list .nb-tile__t::first-line { color: #fb7185; }
+html[data-theme="dark"] .nb-tile--svc .nb-tile__logo { filter: brightness(0) invert(.92); }
+@media (prefers-reduced-motion: reduce) { .nb-tile--list { animation: none !important; } }
