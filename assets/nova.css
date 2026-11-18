@@ -598,3 +598,87 @@ img, video, iframe { max-width: 100%; }
 /* Bannière sans logo */
 .nb-s1__brand{display:none!important}
 .nb-s1 .nb-k{margin-top:0!important}
+
+/* ===== Tuiles catégories : style moderne et animé ===== */
+.nb-tiles { gap: 14px; margin-top: 14px; perspective: 1200px; }
+.nb-tile { border-radius: 22px; height: 240px; padding: 24px; transform-style: preserve-3d;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s, opacity .6s;
+  box-shadow: 0 10px 30px -18px rgba(15,23,42,.55); background-size: 220% 220% !important; animation: nbGrad 10s ease-in-out infinite; }
+.nb-tile:hover { transform: translateY(-8px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)); box-shadow: 0 30px 50px -22px rgba(15,23,42,.6); }
+.nb-tile--dark   { background-image: linear-gradient(135deg, #1e293b, #0f172a 45%, #334155) !important; }
+.nb-tile--orange { background-image: linear-gradient(135deg, #fbbf24, #f97316 50%, #fb923c) !important; }
+.nb-tile--blue   { background-image: linear-gradient(135deg, #60a5fa, #2563eb 50%, #1e40af) !important; }
+.nb-tile--red    { background-image: linear-gradient(135deg, #fb7185, #e11d48 50%, #be123c) !important; }
+@keyframes nbGrad { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+/* halo lumineux qui flotte */
+.nb-tile__orb { position: absolute; z-index: 0; width: 180px; height: 180px; border-radius: 50%; top: -60px; inset-inline-end: -50px;
+  background: radial-gradient(circle, rgba(255,255,255,.35), rgba(255,255,255,0) 70%); animation: nbOrb 7s ease-in-out infinite; pointer-events: none; }
+@keyframes nbOrb { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-30px,40px) scale(1.25); } }
+
+/* reflet qui traverse la tuile au survol */
+.nb-tile::after { content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.35) 45%, transparent 60%); transform: translateX(-120%); }
+.nb-tile:hover::after { transform: translateX(120%); transition: transform .9s ease; }
+
+/* photo produit qui flotte */
+.nb-tile__img { border-radius: 18px !important; box-shadow: 0 18px 30px -14px rgba(0,0,0,.45); animation: nbFloat 5s ease-in-out infinite; transition: transform .45s; }
+.nb-tile:nth-child(2) .nb-tile__img { animation-delay: -1s; } .nb-tile:nth-child(3) .nb-tile__img { animation-delay: -2s; }
+.nb-tile:nth-child(4) .nb-tile__img { animation-delay: -3s; } .nb-tile:nth-child(5) .nb-tile__img { animation-delay: -4s; }
+@keyframes nbFloat { 0%,100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-10px) rotate(-2deg); } }
+.nb-tile:hover .nb-tile__img { animation-play-state: paused; transform: translateY(-14px) rotate(0deg) scale(1.08) translateZ(40px); }
+
+/* titres et boutons */
+.nb-tile__t { font-size: 26px; text-shadow: 0 2px 12px rgba(0,0,0,.15); transform: translateZ(30px); }
+.nb-tile__b { border-radius: 999px; padding: 9px 16px; font-size: 13px; box-shadow: 0 8px 18px -8px rgba(0,0,0,.45); transition: gap .3s, transform .3s; transform: translateZ(35px); }
+.nb-tile__arr { display: inline-block; transition: transform .3s; }
+.rtl .nb-tile__arr { transform: scaleX(-1); }
+.nb-tile:hover .nb-tile__b { gap: 10px; }
+.nb-tile:hover .nb-tile__arr { transform: translateX(4px); }
+.rtl .nb-tile:hover .nb-tile__arr { transform: scaleX(-1) translateX(4px); }
+
+/* tuile Services digitaux : bordure dégradée qui tourne */
+.nb-tile--svc { background: #fff !important; animation: none; border: 0 !important; }
+.nb-tile--svc::before { content: ""; position: absolute; inset: -60%; z-index: -2;
+  background: conic-gradient(from 0deg, #f7c714, #1f8a43, #2563eb, #e11d48, #f7c714); animation: nbSpin 6s linear infinite; }
+.nb-tile--svc .nb-tile__orb { inset: 3px; width: auto; height: auto; border-radius: 19px; top: 3px; background: #fff; animation: none; z-index: -1; }
+@keyframes nbSpin { to { transform: rotate(360deg); } }
+.nb-tile--svc .nb-tile__logo { animation: nbBreath 4s ease-in-out infinite; }
+@keyframes nbBreath { 0%,100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+html[data-theme="dark"] .nb-tile--svc .nb-tile__orb { background: #16314f; }
+html[data-theme="dark"] .nb-tile--svc { background: transparent !important; }
+
+/* tuile Liste scolaire : fond pointillé qui glisse et bouton qui pulse */
+.nb-tile--list { animation: nbDots 18s linear infinite; background-size: 18px 18px !important; }
+@keyframes nbDots { to { background-position: 180px 90px; } }
+.nb-tile--list .nb-tile__t { -webkit-text-stroke: 0; color: var(--primary); text-shadow: none; font-size: 22px; text-transform: none; letter-spacing: -.01em; }
+.nb-tile--list .nb-tile__t::first-line { color: #e11d48; }
+html[data-theme="dark"] .nb-tile--list .nb-tile__t { color: #9cc3ef; }
+.nb-tile--list .nb-tile__orb { background: radial-gradient(circle, rgba(37,211,102,.35), rgba(37,211,102,0) 70%); }
+.nb-tile--list .nb-tile__b { background: #1f8a43 !important; position: relative; }
+.nb-tile--list .nb-tile__b::before { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: 0 0 0 0 rgba(37,211,102,.6); animation: nbPulse 2.2s ease-out infinite; }
+@keyframes nbPulse { to { box-shadow: 0 0 0 16px rgba(37,211,102,0); } }
+
+/* apparition en cascade au défilement */
+.nb-tiles.js-reveal .nb-tile { opacity: 0; transform: translateY(30px) scale(.97); }
+.nb-tiles.js-reveal.is-in .nb-tile { opacity: 1; transform: none; }
+.nb-tiles.js-reveal.is-in .nb-tile:hover { transform: translateY(-8px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)); }
+.nb-tiles.is-in .nb-tile:nth-child(2) { transition-delay: .08s, .08s, .08s; } .nb-tiles.is-in .nb-tile:nth-child(3) { transition-delay: .16s, .16s, .16s; }
+.nb-tiles.is-in .nb-tile:nth-child(4) { transition-delay: .24s, .24s, .24s; } .nb-tiles.is-in .nb-tile:nth-child(5) { transition-delay: .32s, .32s, .32s; }
+.nb-tiles.is-in .nb-tile:nth-child(6) { transition-delay: .4s, .4s, .4s; }
+.nb-tiles.is-done .nb-tile { transition-delay: 0s !important; }
+
+@media (max-width: 720px) { .nb-tile { height: 180px; border-radius: 18px; padding: 16px; } .nb-tile__t { font-size: 19px; } .nb-tile__orb { width: 120px; height: 120px; } }
+@media (prefers-reduced-motion: reduce) {
+  .nb-tile, .nb-tile__img, .nb-tile__orb, .nb-tile--svc::before, .nb-tile--svc .nb-tile__logo, .nb-tile--list, .nb-tile--list .nb-tile__b::before { animation: none !important; }
+  .nb-tiles.js-reveal .nb-tile { opacity: 1; transform: none; }
+}
+.nb-tile--list { padding-inline: 16px; }
+.nb-tile--list .nb-tile__b { padding: 9px 14px; font-size: 12.5px; max-width: 100%; text-align: center; }
+@media (max-width: 720px) {
+  .nb-tile__b { padding: 7px 11px; font-size: 11px; white-space: nowrap; box-shadow: 0 6px 12px -6px rgba(0,0,0,.45); }
+  .nb-tile__arr { display: none; }
+  .nb-tile--svc .nb-tile__t { font-size: 18px; }
+  .nb-tile--list .nb-tile__t { font-size: 15px; }
+  .nb-tile--list .nb-tile__b { white-space: normal; padding: 7px 10px; font-size: 11px; margin-top: 10px; }
+}
