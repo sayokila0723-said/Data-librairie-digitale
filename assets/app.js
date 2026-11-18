@@ -314,3 +314,24 @@
     }).observe(s, { attributes: true, attributeFilter: ['class'] });
   });
 })();
+
+/* Tuiles catégories : apparition en cascade + inclinaison 3D au survol */
+(function () {
+  var box = document.querySelector('.nb-tiles'); if (!box) return;
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!calm && 'IntersectionObserver' in window) {
+    box.classList.add('js-reveal');
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { box.classList.add('is-in'); setTimeout(function () { box.classList.add('is-done'); }, 1200); io.disconnect(); } });
+    }, { threshold: 0.15 });
+    io.observe(box);
+  }
+  if (calm || !(window.matchMedia && window.matchMedia('(pointer: fine)').matches)) return;
+  box.querySelectorAll('.nb-tile').forEach(function (t) {
+    t.addEventListener('mousemove', function (ev) {
+      var r = t.getBoundingClientRect(), x = (ev.clientX - r.left) / r.width - .5, y = (ev.clientY - r.top) / r.height - .5;
+      t.style.setProperty('--ry', (x * 10).toFixed(2) + 'deg'); t.style.setProperty('--rx', (-y * 10).toFixed(2) + 'deg');
+    });
+    t.addEventListener('mouseleave', function () { t.style.removeProperty('--ry'); t.style.removeProperty('--rx'); });
+  });
+})();

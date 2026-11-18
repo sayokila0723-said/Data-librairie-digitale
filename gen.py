@@ -405,13 +405,13 @@ def build_home(L):
     # tuiles colorées
     def tile(cls, href, title, img, btn, ext=""):
         im = nb_img(img, pre, "nb-tile__img") if img else ""
-        return f'<a class="nb-tile {cls}" href="{href}"{ext}><span class="nb-tile__t">{title}</span><span class="nb-tile__b">{E(btn)}</span>{im}</a>'
-    tiles = (f'<a class="nb-tile nb-tile--svc" href="services.html"><img class="nb-tile__logo" src="{pre}img/emblem-navy.svg" alt=""><span class="nb-tile__t">{E(V["t_svc"])}</span><span class="nb-tile__s">{E(V["t_svc_s"])}</span></a>'
+        return f'<a class="nb-tile {cls}" href="{href}"{ext}><span class="nb-tile__orb" aria-hidden="true"></span><span class="nb-tile__t">{title}</span><span class="nb-tile__b">{E(btn)} <span class="nb-tile__arr" aria-hidden="true">→</span></span>{im}</a>'
+    tiles = (f'<a class="nb-tile nb-tile--svc" href="services.html"><span class="nb-tile__orb" aria-hidden="true"></span><img class="nb-tile__logo" src="{pre}img/emblem-navy.svg" alt=""><span class="nb-tile__t">{E(V["t_svc"])}</span><span class="nb-tile__s">{E(V["t_svc_s"])}</span></a>'
              + tile("nb-tile--dark", cslug("Scolaire") + ".html", E(V["t_sco"]), g("Cartable à roulettes 18 pouces"), V["shop_now"])
              + tile("nb-tile--orange", cslug("Livres") + ".html", E(V["t_liv"]), g("Dictionnaire Le Robert Micro"), V["shop_now"])
              + tile("nb-tile--blue", cslug("Bureau & Organisation") + ".html", E(V["t_bur"]), g("Organiseur de bureau en bois 6 cases"), V["shop_now"])
              + tile("nb-tile--red", cslug("Beaux-arts & Loisirs créatifs") + ".html", E(V["t_art"]), g("Set de 12 pinceaux synthétiques"), V["shop_now"])
-             + f'<a class="nb-tile nb-tile--list js-wa" href="{wa(U["wa_list"])}" target="_blank" rel="noopener"><span class="nb-tile__t">{E(V["t_list"])}</span><span class="nb-tile__b">{ic("whatsapp", 14)} {E(V["t_list_b"])}</span></a>')
+             + f'<a class="nb-tile nb-tile--list js-wa" href="{wa(U["wa_list"])}" target="_blank" rel="noopener"><span class="nb-tile__orb" aria-hidden="true"></span><span class="nb-tile__t">{E(V["t_list"])}</span><span class="nb-tile__b">{ic("whatsapp", 14)} {E(V["t_list_b"])}</span></a>')
     tiles = f'<section class="nb-tiles">{tiles}</section>'
     def band(title, sub, link, items):
         if not items: return ""
