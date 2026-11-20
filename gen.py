@@ -362,7 +362,7 @@ desktop.ini
 # Position exacte de la librairie (fiche Google Maps « Data Librairie Charaf L.C.H »)
 SHOP_LL = "31.6737339,-8.0206104"
 PLACE_URL = "https://maps.app.goo.gl/At59k2epAYsSkAC46"
-GO_URL = "https://maps.app.goo.gl/N9UXr3NktGzf6FSo8"
+GO_URL = "https://maps.app.goo.gl/At59k2epAYsSkAC46"
 GO_T = {"fr": "Y aller depuis ma position", "en": "Directions from my location", "ar": "الطريق من موقعي الحالي"}
 
 FIND = {
