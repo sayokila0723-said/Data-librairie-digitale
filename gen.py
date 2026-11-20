@@ -363,7 +363,7 @@ desktop.ini
 SHOP_LL = "31.6737339,-8.0206104"
 PLACE_URL = ("https://www.google.com/maps/place/Data+Librairie+Digitale/@31.6737339,-8.0206104,18z/"
              "data=!4m6!3m5!1s0xdafed007bd8c65f:0xaca431eb3737f1a8!8m2!3d31.6737339!4d-8.0206104")
-GO_URL = "https://www.google.com/maps/dir/?api=1&destination=31.6737339%2C-8.0206104&travelmode=driving"
+GO_URL = "https://maps.app.goo.gl/N9UXr3NktGzf6FSo8"
 GO_T = {"fr": "Y aller depuis ma position", "en": "Directions from my location", "ar": "الطريق من موقعي الحالي"}
 
 FIND = {
