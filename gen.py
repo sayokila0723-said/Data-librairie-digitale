@@ -297,7 +297,7 @@ def card(p, L, pre=""):
     else:
         price = money(p["regular"], L)
     n = pname(p, L)
-    return (f'<li class="product nb-card">{on}<a href="{p["slug"]}.html" class="woocommerce-LoopProduct-link"><span class="nb-card__img"><img src="{pre}{p["img"]}" alt="{E(n)}" loading="lazy" width="400" height="400"></span>'
+    return (f'<li class="product nb-card">{on}<a href="{p["slug"]}.html" class="woocommerce-LoopProduct-link"><span class="nb-card__img"><img src="{pre}{thumb(p["img"])}" alt="{E(n)}" loading="lazy" width="400" height="400"></span>'
             f'<h2 class="woocommerce-loop-product__title">{E(n)}</h2><span class="price">{price}</span></a>{swatches_mini(p, L, pre)}'
             + (f'<div class="nb-card__foot"><a href="{p["slug"]}.html" class="nb-buy nb-buy--choose">{ic("grid", 16)} {E(VR.LABELS[L]["choose"])}</a><span class="nb-stock">{E(U["in_stock"])}</span></div></li>' if "variants" in p else
                f'<div class="nb-card__foot"><a href="#" class="nb-buy js-add" {cdata(p, n, pre)}>{ic("cart", 16)} {E(PJ.J[L]["add"])}</a><span class="nb-stock">{E(U["in_stock"])}</span></div></li>'))
@@ -386,14 +386,17 @@ def page(L, file, title, body, active="", desc=""):
     if file == "index.html": write(L, "menu.html", catmenu(L, root))
 
 # ---------------- pages ----------------
+def thumb(img):
+    return img.replace("img/p/", "img/t/")
+
 def nb_img(p, pre, cls=""):
-    return f'<span class="nb-poly {cls}"><img src="{pre}{p["img"]}" alt="" loading="lazy"></span>'
+    return f'<span class="nb-poly {cls}"><img src="{pre}{thumb(p["img"])}" alt="" loading="lazy"></span>'
 
 def build_home(L):
     U = SI.UI[L]; V = NV.N[L]; pre = "" if L == "fr" else "../"
     by = {p["name"]: p for p in P}
     _ALT = {"Calculatrice scientifique Casio fx-82MS": "Calculatrice Casio fx-991ES Plus", "Kit de traçage 4 pièces 30 cm Maped": "Kit de traçage Deli",
-            "Dictionnaire Le Robert Micro": "Larousse — Mon premier dictionnaire", "Organiseur de bureau en bois 6 cases": "Ensemble de bureau Office Set ARK"}
+            "Dictionnaire Le Robert Micro": "Larousse — Mon premier dictionnaire", "Organiseur de bureau en bois 6 cases": "Ensemble de bureau Office Set ARK", "Crayons de couleur Maped Color'Peps — 12": "Crayons de couleur Maped"}
     g = lambda n: by[n] if n in by else by[_ALT.get(n, n)]
     # bandeaux (slider)
     s1 = (f'<div class="hero__slide nb-s1 is-active"><div class="nb-s1__blob"></div>'
@@ -408,7 +411,7 @@ def build_home(L):
           f'<div class="nb-collage">{nb_img(g("Trousse garnie 25 pièces"), pre, "c1")}{nb_img(g("Kit de traçage 4 pièces 30 cm Maped"), pre, "c2")}{nb_img(g("Bâton de colle UHU Stic 21 g"), pre, "c3")}{nb_img(g("Feutres de coloriage Maped — 24"), pre, "c4")}</div></div>')
     hero = (f'<div class="hero nb-hero" data-slider><div class="hero__track">{s1}{s2}{s3}</div><button class="hero__nav hero__nav--prev" aria-label="{E(U["prev"])}">{ic("left", 22)}</button>'
             f'<button class="hero__nav hero__nav--next" aria-label="{E(U["next"])}">{ic("chevron", 22)}</button><div class="hero__dots nb-dots"><button class="is-active"></button><button></button><button></button></div></div>')
-    box = f'<aside class="nb-cats"><h2 class="nb-cats__title">{E(V["cats_title"])}</h2>{catmenu(L, pre, services=True)}</aside>'
+    box = f'<aside class="nb-cats"><h2 class="nb-cats__title">{E(V["cats_title"])}</h2><div class="js-catmenu"></div></aside>'
     top = f'<section class="nb-top">{box}{hero}</section>'
     # tuiles colorées
     def tile(cls, href, title, img, btn, ext=""):
@@ -463,7 +466,7 @@ def build_home_old(L):
             f'<button class="hero__nav hero__nav--next" aria-label="{E(U["next"])}">{ic("chevron", 22)}</button><div class="hero__dots"><button class="is-active"></button><button></button><button></button></div></div>')
     promos = (f'<div class="promos"><a class="promo promo--1" href="services.html"><span class="promo__body"><span class="promo__title">{E(U["promo1_t"])}</span><span class="promo__text">{E(U["promo1_s"])}</span><span class="promo__btn">{E(U["promo1_b"])} {ic("chevron", 14)}</span></span></a>'
               f'<a class="promo promo--2 js-wa" href="{wa(U["wa_list"])}" target="_blank" rel="noopener"><span class="promo__body"><span class="promo__title">{E(U["promo2_t"])}</span><span class="promo__text">{E(U["promo2_s"])}</span><span class="promo__btn">{E(U["promo2_b"])} {ic("chevron", 14)}</span></span></a></div>')
-    top = f'<section class="home-top container"><aside class="catbox">{catmenu(L, pre)}</aside>{hero}{promos}</section>'
+    top = f'<section class="home-top container"><aside class="catbox"><div class="js-catmenu"></div></aside>{hero}{promos}</section>'
     feats = "".join(f'<div class="feature"><span class="feature__icon">{ic(i, 26)}</span><div><strong>{E(U[a])}</strong><small>{E(U[b])}</small></div></div>' for i, a, b in [("truck", "f1", "f1s"), ("cash", "f2", "f2s"), ("monitor", "f3", "f3s"), ("shield", "f4", "f4s")])
     feats = f'<section class="features container">{feats}</section>'
     ray = "".join(f'<a class="rayon" href="{cslug(t)}.html"><span class="rayon__media"><img src="{pre}{cat_first_img(t)}" alt="" loading="lazy"></span><span class="rayon__name">{E(cname(t, L))}</span><span class="rayon__count">{sum(1 for p in P if p["top"] == t)} {E(U["products"])}</span></a>' for t in TOPS)
@@ -649,7 +652,7 @@ def build_pages(L):
     page(L, "contact.html", U["contact"], contact, "contact.html")
     page(L, "recherche.html", U["search"], f'<div class="container shop-wrap"><div class="shop-content"><h1 class="page-title" id="titre-recherche">{E(U["search"])}</h1><div class="woocommerce"><ul class="products columns-4" id="resultats"></ul></div><div class="svc-grid" id="resultats-services"></div></div></div>')
     # index de recherche
-    idx = [{"t": "p", "n": pname(p, L), "u": p["slug"] + ".html", "i": p["img"], "id": p["sku"], "v": f'{float(p["sale"] or p["regular"]):.2f}', "p": money(p["sale"] or p["regular"], L),
+    idx = [{"t": "p", "n": pname(p, L), "u": p["slug"] + ".html", "i": thumb(p["img"]), "id": p["sku"], "v": f'{float(p["sale"] or p["regular"]):.2f}', "p": money(p["sale"] or p["regular"], L),
             "o": money(p["regular"], L) if p["sale"] else "", "c": slug(p["top"]), "k": cname(p["top"], L) + " " + cname(p["sub"], L) + " " + p["name"] + " " + " ".join(cl(v["color"], L) + " " + cl(v["color"], "fr") for v in p.get("variants", []))} for p in P]
     idx += [{"t": "s", "n": s[5][L][0], "d": s[5][L][1], "k": s[5]["fr"][0]} for s in SI.SERVICES]
     from web_services import PACKS
@@ -741,6 +744,11 @@ if __name__ == "__main__":
             elif not os.path.exists(dst):
                 q = _bysku_all[v["sku"]]
                 shutil.copy(q["photo"] if q.get("real") else f"{BASE}imgs-byname/{_BYNAME[q['name']]}.jpg", dst)
+    from PIL import Image as _Im
+    os.makedirs(os.path.join(OUT, "img", "t"), exist_ok=True)
+    for f in os.listdir(os.path.join(OUT, "img", "p")):
+        im = _Im.open(os.path.join(OUT, "img", "p", f)).convert("RGB"); im.thumbnail((300, 300), _Im.LANCZOS)
+        im.save(os.path.join(OUT, "img", "t", f), quality=78, optimize=True, progressive=True)
     A = BASE + "assets/"
     for f in ["site.css", "digitale.css", "nova.css", "dark.css", "app.js"]: shutil.copy(A + f, os.path.join(OUT, "assets", f))
     for f in ["emblem.svg", "emblem-navy.svg", "favicon.png", "logo-trilingue-h.png", "logo-data.png"]: shutil.copy(A + f, os.path.join(OUT, "img", f))

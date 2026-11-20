@@ -153,6 +153,7 @@ _REPL = {
  "Chemises & copies doubles": ["Chemises", "Copies & recharges"],
  "Papier calque & millimétré": ["Papier calque", "Papier millimétré"],
  "Manuels philosophie": ["Manuels philosophie", "Manuels éducation artistique"],
+ "Peinture": ["Gouache", "Peinture"],
 }
 def _rep(subs):
     out = []

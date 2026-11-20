@@ -371,3 +371,23 @@ def build():
         names.setdefault(fr, 1)
         out.append((shot, idx, key, (fr, en, ar), price, ref, ""))
     return out
+
+# ---- 3e envoi : Dessiner - Peindre ----
+TY.update({"colo": ("Cahier de coloriage", "colouring book", "دفتر التلوين"), "cc": ("Crayons de couleur", "colouring pencils", "أقلام التلوين"),
+           "cire": ("Crayons à cire", "wax crayons", "أقلام الشمع"), "gch": ("Gouache", "gouache paint", "غواش")})
+_D["art"] = ("Pour dessiner, colorier et peindre à l'école et à la maison.", "To draw, colour and paint at school and at home.", "للرسم والتلوين في المدرسة والبيت.")
+SUBS2.update({"colo": S(BA, "Cahiers de coloriage", "Colouring books", "دفاتر التلوين", "art"), "cc": S(BA, "Crayons de couleur", "Colouring pencils", "أقلام التلوين", "art"),
+              "cire": S(BA, "Crayons à cire", "Wax crayons", "أقلام الشمع", "art"), "gch": S(BA, "Gouache", "Gouache paint", "الغواش", "art")})
+R2 += rows("u05", "colo", [("colo", "« لون واتعرف على مدينتي »", 13, "978-9920"), ("colo", "« سلسلة أمين »", 15, "978-9920-767-43-9"),
+                           ("colo", "« سلسلة فرح »", 15, "978-9954-24-534-7"), ("colo", "Marwa — les animaux domestiques", 10, "978")])
+R2 += rows("u06", "cc", [("cc", x, p, r) for x, p, r in [("Faber-Castell", 30, "115853"), ("Maped", 20, "115853"), ("New Elite", 10, "712"), ("School Up", 10, "7-12"),
+ ("Y-Plus 12 pièces", 20, ""), ("Y-Plus 24 pièces", 50, "TC140230"), ("BIC Kids 24 pièces", 70, ""), ("Casber", 6, "C-7028"), ("Deli 12 pièces", 20, "C00100"),
+ ("Deli 12 pièces", 35, "C00600"), ("Deli", 20, "C113-12"), ("Deli", 25, "C113-12"), ("Deli", 8, "C114-12"), ("Express Artista", 5, "XJ-3619"), ("Flamingo", 15, "F6512/L")]])
+R2 += rows("u07", "cire", [("cire", "Deli", 10, "C20800")])
+R2 += rows("u08", "gch", [("gch", x, p, r) for x, p, r in [("Accord noire 250 ml", 20, "SPM0315"), ("Boost bleu 125 ml", 15, "BS-B125"), ("Boost jaune 125 ml", 15, "BS-B125"),
+ ("Boost noir 125 ml", 15, "BS-B125"), ("Boost vert 125 ml", 15, "BS-B125"), ("Ecolo 1000 ml", 35, "PG1000B"), ("Express 500 ml", 25, "XJ-3398"), ("Express jaune 250 ml", 20, "XJ-3541"),
+ ("Express rouge 250 ml", 20, "XJ-3527"), ("Faber-Castell 500 ml", 35, "144512"), ("M-School 125 ml", 15, "449346"), ("M-School blanche 1000 ml", 35, "449348"),
+ ("M-School rose 500 ml", 25, "449347"), ("Boost rouge 500 ml", 25, "BS-B500"), ("Boost bleu 500 ml", 25, "BS-B500"), ("Boost 12 tubes 10 ml", 25, "BS-T112"),
+ ("Boost vert 500 ml", 25, "BS-B500"), ("Ecolo dorée", 17, "PGE120AG-OR"), ("Express 10 tubes 10 ml", 20, "XJ-0335"), ("Express 5 tubes", 10, "XJ-3466"),
+ ("Express blanche 250 ml", 20, "XJ-3565"), ("Express bleu 250 ml", 20, "XJ-3534"), ("Express noir 250 ml", 20, "XJ-3558"), ("Express vert 250 ml", 20, "XJ-3831")]])
+R2 += rows("u09", "gch", [("gch", "Express 12 tubes 10 ml", 25, "XJ-6627"), ("gch", "Ecolo noire 500 ml", 25, "PGE500N")])
