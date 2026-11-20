@@ -75,7 +75,12 @@ ICONS = {
 WA_ICON = '<svg width="{s}" height="{s}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>'
 def ic(name, s=20):
     if name == "whatsapp": return WA_ICON.format(s=s)
-    return f'<svg width="{s}" height="{s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS.get(name, ICONS["grid"])}</svg>'
+    if name not in ICONS: name = "grid"
+    return f'<svg width="{s}" height="{s}" aria-hidden="true"><use href="#i-{name}"/></svg>'
+
+def icon_sprite():
+    sym = "".join(f'<symbol id="i-{k}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">{v}</symbol>' for k, v in ICONS.items())
+    return f'<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">{sym}</svg>'
 
 def slug(s):
     s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
@@ -224,7 +229,7 @@ def header(L, file, root, active=""):
            (gslug(GROUPS[0]) + ".html", gname(GROUPS[0], L)), (gslug(GROUPS[4]) + ".html", gname(GROUPS[4], L)), (gslug(GROUPS[3]) + ".html", gname(GROUPS[3], L)), ("contact.html", U["contact"])]
     navh = "".join(f'<li class="{"current-menu-item" if f == active else ""}"><a href="{f}">{E(t)}</a></li>' for f, t in nav)
     home = file == "index.html"
-    return f'''<body class="nova style-pro woocommerce woocommerce-page{' rtl' if L == 'ar' else ''} lang-{L}{' home' if home else ''}">
+    return f'''<body class="nova style-pro woocommerce woocommerce-page{' rtl' if L == 'ar' else ''} lang-{L}{' home' if home else ''}">{icon_sprite()}
 <a class="skip-link" href="#main">↓</a>
 <div class="topbar"><div class="container topbar__inner">
  <div class="topbar__contact"><a href="tel:{PHONE.replace(' ', '').replace('-', '')}">{ic("phone", 14)} <span dir="ltr">{PHONE}</span></a><span class="topbar__hours">{ic("clock", 14)} {E(U["hours_v"])}</span><a class="topbar__find" href="{E(GO_URL)}" target="_blank" rel="noopener">{ic("pin", 14)} {E(FIND[L]["top"])}</a>{theme_btn(L)}</div>
@@ -243,12 +248,12 @@ def header(L, file, root, active=""):
  <div class="header__actions"><a class="nb-hbtn nb-hbtn--map" href="{E(GO_URL)}" target="_blank" rel="noopener" title="{E(FIND[L]["float_"])}">{ic("pin", 20)}<span>{E(FIND[L]["btn"])}</span></a><a class="nb-hbtn nb-hbtn--cart" href="panier.html">{ic("cart", 20)}<span>{E(PJ.J[L]["cart"])}</span><b class="cart-count" data-cart-count hidden>0</b></a><a class="nb-hbtn nb-hbtn--icon js-wa" href="{wa(U["wa_q"])}" target="_blank" rel="noopener" aria-label="WhatsApp">{ic("whatsapp", 20)}</a></div>
 </div>
 <nav class="mainnav"><div class="container mainnav__inner">
- <div class="allcats{' allcats--home' if home else ''}"><button class="allcats__btn" type="button">{ic("menu", 18)} {E(U["all_cats"])}</button>{'' if home else '<div class="allcats__panel">' + catmenu(L, root) + '</div>'}</div>
+ <div class="allcats{' allcats--home' if home else ''}"><button class="allcats__btn" type="button">{ic("menu", 18)} {E(U["all_cats"])}</button>{'' if home else '<div class="allcats__panel"><div class="js-catmenu"></div></div>'}</div>
  <ul class="mainnav__menu">{navh}</ul>
  <a class="mainnav__wa js-wa" href="{wa(U["wa_q"])}" target="_blank" rel="noopener">{ic("whatsapp", 16)} {E(U["order_wa"])}</a>
 </div></nav></header>
 <div class="drawer" data-drawer aria-hidden="true"><div class="drawer__panel"><div class="drawer__head"><strong>{E(U["cats"])}</strong><button class="icon-btn" data-drawer-close aria-label="{E(U["close"])}">{ic("close", 22)}</button></div>
-{catmenu(L, root)}<ul class="drawer__menu">{navh}</ul><nav class="langs langs--drawer">{langs}</nav></div><div class="drawer__overlay" data-drawer-close></div></div>
+<div class="js-catmenu"></div><ul class="drawer__menu">{navh}</ul><nav class="langs langs--drawer">{langs}</nav></div><div class="drawer__overlay" data-drawer-close></div></div>
 <main id="main" class="site-main">'''
 
 def pay_badges(L, big=False):
@@ -378,6 +383,7 @@ def write(L, file, content):
 def page(L, file, title, body, active="", desc=""):
     root = "" if L == "fr" else "../"
     write(L, file, head(L, title, root, desc) + header(L, file, root, active) + body + footer(L, file, root))
+    if file == "index.html": write(L, "menu.html", catmenu(L, root))
 
 # ---------------- pages ----------------
 def nb_img(p, pre, cls=""):
@@ -386,7 +392,9 @@ def nb_img(p, pre, cls=""):
 def build_home(L):
     U = SI.UI[L]; V = NV.N[L]; pre = "" if L == "fr" else "../"
     by = {p["name"]: p for p in P}
-    g = lambda n: by[n]
+    _ALT = {"Calculatrice scientifique Casio fx-82MS": "Calculatrice Casio fx-991ES Plus", "Kit de traçage 4 pièces 30 cm Maped": "Kit de traçage Deli",
+            "Dictionnaire Le Robert Micro": "Larousse — Mon premier dictionnaire", "Organiseur de bureau en bois 6 cases": "Ensemble de bureau Office Set ARK"}
+    g = lambda n: by[n] if n in by else by[_ALT.get(n, n)]
     # bandeaux (slider)
     s1 = (f'<div class="hero__slide nb-s1 is-active"><div class="nb-s1__blob"></div>'
           f'<div class="nb-s__text"><p class="nb-k">{E(V["s1_k"])}</p><h2 class="nb-t">{E(V["s1_t"])}</h2><p class="nb-y">{E(V["s1_y"])}</p><p class="nb-ribbon">{E(V["s1_b"])}</p>'
@@ -494,7 +502,7 @@ def build_listing(L, base, title, desc, items, chips=""):
         chunk = items[k * PER_PAGE:(k + 1) * PER_PAGE]
         a, b = k * PER_PAGE + 1, k * PER_PAGE + len(chunk)
         count = f'{len(items)} {U["products"]}' if pages == 1 else f'{a}–{b} {U["of"]} {len(items)}'
-        body = (f'<div class="container shop-wrap has-sidebar"><aside class="shop-sidebar"><div class="catbox catbox--static"><h2 class="catbox__title">{ic("grid", 18)} {E(U["cats"])}</h2>{catmenu(L, pre)}</div></aside>'
+        body = (f'<div class="container shop-wrap has-sidebar"><aside class="shop-sidebar"><div class="catbox catbox--static"><h2 class="catbox__title">{ic("grid", 18)} {E(U["cats"])}</h2><div class="js-catmenu"></div></div></aside>'
                 f'<div class="shop-content"><nav class="woocommerce-breadcrumb"><a href="index.html">{E(U["home"])}</a><span class="sep">/</span>{E(title)}</nav>'
                 f'<h1 class="page-title">{E(title)}</h1>' + (f'<p class="term-desc">{E(desc)}</p>' if desc else "") + chips +
                 f'<p class="woocommerce-result-count">{count}</p><div class="woocommerce"><ul class="products columns-4">{"".join(card(p, L, pre) for p in chunk)}</ul></div>{pager(L, base, pages, k + 1)}</div></div>')

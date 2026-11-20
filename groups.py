@@ -130,3 +130,38 @@ NEW_SUBS = {
  "Hygiène & entretien": ("Hygiene & cleaning", "النظافة والصيانة"), "Emballage & expédition": ("Packaging & shipping", "التغليف والإرسال"),
  "Café & accueil": ("Coffee & reception", "القهوة والاستقبال"),
 }
+
+# ---- 2e relevé de caisse : les sous-rayons réels remplacent les rayons génériques ----
+_REPL = {
+ "Rangement de bureau": ["Paniers à courrier", "Ensembles de bureau"],
+ "Agendas & notebooks": ["Notebooks", "Agendas & calendriers"],
+ "Blocs-notes & Post-it": ["Blocs-notes à spirale", "Blocs-notes & carnets sans spirale", "Post-it & notes repositionnables"],
+ "Papier A4 & papier couleur": ["Papier blanc A4 (ramettes)", "Chemises", "Rouleaux papier", "Copies & recharges", "Papier millimétré",
+                                "Papier calque", "Papier carbone", "Papier ministre", "Fiches & bristol"],
+ "Enveloppes & courrier": ["Enveloppes"],
+ "Calculatrices de bureau": ["Calculatrices", "Étiqueteuses"],
+ "Calculatrices scientifiques": ["Calculatrices"],
+ "Agrafage & perforation": ["Agrafeuses", "Agrafes", "Arrache-agrafes", "Perforateurs"],
+ "Petite fourniture": ["Règles", "Équerres", "Rapporteurs", "Kits de traçage", "Compas", "Gommes", "Ciseaux", "Taille-crayons",
+                       "Colles, scotch & dévidoirs", "Post-it & notes repositionnables", "Punaises", "Élastiques", "Trombones & attaches",
+                       "Étiquettes adhésives", "Mouilleurs", "Œillets"],
+ "Géométrie": ["Règles", "Équerres", "Rapporteurs", "Kits de traçage", "Compas"],
+ "Couverture & plastification": ["Couvertures & plastification", "Pochettes perforées", "Serre-feuilles & spirales"],
+ "Cachets & dateurs": ["Cachets", "Dateurs", "Encres & tampons encreurs"],
+ "Tableaux & accessoires": ["Tableaux & accessoires", "Chevalets", "Brosses tableau", "Craies", "Ardoises électroniques", "Ardoises noires", "Ardoises blanches"],
+ "Craies & brosses": ["Craies", "Brosses tableau", "Ardoises blanches", "Ardoises noires", "Ardoises électroniques"],
+ "Chemises & copies doubles": ["Chemises", "Copies & recharges"],
+ "Papier calque & millimétré": ["Papier calque", "Papier millimétré"],
+ "Manuels philosophie": ["Manuels philosophie", "Manuels éducation artistique"],
+}
+def _rep(subs):
+    out = []
+    for x in subs:
+        for y in _REPL.get(x, [x]):
+            if y not in out: out.append(y)
+    return out
+def _fix(e):
+    if isinstance(e, tuple):
+        subs = _rep(e[3]); return (e[0], e[1], e[2], subs, e[4] if len(subs) == 1 else None)
+    r = _rep([e]); return e if r == [e] else SG(e, e, e, r)
+GROUPS = [g[:5] + ([_fix(e) for e in g[5]],) + tuple(g[6:]) for g in GROUPS]

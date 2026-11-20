@@ -386,3 +386,13 @@ GROUPS = [
  (("Marqueur permanent Memory", "Memory permanent marker", "قلم ماركر دائم Memory"), [("bleu", ("s08", 2)), ("noir", ("s08", 3))]),
  (("Surligneur Faber-Castell", "Faber-Castell highlighter", "قلم تمييز Faber-Castell"), [("vert", ("s09", 5)), ("bleu", ("s09", 2)), ("orange", ("s09", 3)), ("rose", ("s09", 4))]),
 ]
+
+# ---- 2e relevé (bureau, papeterie, petite fourniture, livres) ----
+import real_catalog2 as _RC2
+SUBS.update(_RC2.SUBS2)
+_seen = {r[3][0] for r in R}
+for _r in _RC2.build():
+    if _r[3][0] in _seen:  # déjà présent dans le 1er relevé
+        continue
+    _seen.add(_r[3][0]); R.append(_r)
+NO_PHOTO |= _RC2.NO_PHOTO2
