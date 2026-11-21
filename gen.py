@@ -748,7 +748,7 @@ if __name__ == "__main__":
         dst = os.path.join(OUT, p["img"])
         if p.get("real"):
             if p.get("photo"): shutil.copy(p["photo"], dst)
-            else: DRAW("notebook", "#2a9d4b", p["name"], dst)
+            else: shutil.copy(BASE + "assets/photo-a-venir.jpg", dst)  # pas de vraie photo : image neutre
         else:
             shutil.copy(f"{BASE}imgs-byname/{_BYNAME[p['name']]}.jpg", dst)
         for v in p.get("variants", []):
