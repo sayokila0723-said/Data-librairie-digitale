@@ -91,6 +91,8 @@ def wa(msg=""):
     return f"https://wa.me/{WA}" + (f"?text={quote(msg)}" if msg else "")
 
 # ---------------- données ----------------
+import time as _t
+ASSET_V = _t.strftime("%Y%m%d%H%M")
 P = catalog.products()
 P.sort(key=lambda p: not p.get("real"))  # produits « À venir » toujours en dernier
 TOPS = catalog.TOP_ORDER
@@ -184,7 +186,7 @@ def head(L, title, root, desc=""):
     alt = "".join(f'<link rel="alternate" hreflang="{l}" href="{root}{"" if l == "fr" else l + "/"}{{FILE}}">' for l in LANGS)
     return (f'<!doctype html><html lang="{L}"{d}><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
             f'<title>{E(title)} – {E(U["brand"])}</title><meta name="description" content="{E(desc or U["footer_about"])}">'
-            f'<link rel="icon" href="{root}img/favicon.png">{alt}{FONTS}<link rel="stylesheet" href="{root}assets/site.css"><link rel="stylesheet" href="{root}assets/digitale.css"><link rel="stylesheet" href="{root}assets/nova.css"><link rel="stylesheet" href="{root}assets/dark.css">'
+            f'<link rel="icon" href="{root}img/favicon.png">{alt}{FONTS}<link rel="stylesheet" href="{root}assets/site.css?v={ASSET_V}"><link rel="stylesheet" href="{root}assets/digitale.css?v={ASSET_V}"><link rel="stylesheet" href="{root}assets/nova.css?v={ASSET_V}"><link rel="stylesheet" href="{root}assets/dark.css?v={ASSET_V}">'
             '<script>(function(){var t=null;try{t=localStorage.getItem("ld_theme")}catch(e){}if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark")})()</script></head>')
 
 def catmenu(L, root, services=True):
@@ -286,7 +288,7 @@ def footer(L, file, root):
 <a class="map-float" href="{E(GO_URL)}" target="_blank" rel="noopener" aria-label="{E(FIND[L]["float_"])}" title="{E(FIND[L]["float_"])}">{ic("pin", 26)}<span>{E(FIND[L]["btn"])}</span></a><a class="wa-float js-wa" href="{wa(U["wa_q"])}" target="_blank" rel="noopener" aria-label="WhatsApp">{ic("whatsapp", 30)}</a>
 <div id="toast" class="toast" hidden></div>
 <script>window.I18N={i18n};window.ROOT="{root}";window.LANG="{L}";</script>
-<script src="{root}config.js"></script><script src="{root}assets/app.js"></script>
+<script src="{root}config.js"></script><script src="{root}assets/app.js?v={ASSET_V}"></script>
 </body></html>'''
 
 SOON_T = {"fr": "À venir", "en": "Coming soon", "ar": "قريباً"}
