@@ -391,3 +391,77 @@ R2 += rows("u08", "gch", [("gch", x, p, r) for x, p, r in [("Accord noire 250 ml
  ("Boost vert 500 ml", 25, "BS-B500"), ("Ecolo dorée", 17, "PGE120AG-OR"), ("Express 10 tubes 10 ml", 20, "XJ-0335"), ("Express 5 tubes", 10, "XJ-3466"),
  ("Express blanche 250 ml", 20, "XJ-3565"), ("Express bleu 250 ml", 20, "XJ-3534"), ("Express noir 250 ml", 20, "XJ-3558"), ("Express vert 250 ml", 20, "XJ-3831")]])
 R2 += rows("u09", "gch", [("gch", "Express 12 tubes 10 ml", 25, "XJ-6627"), ("gch", "Ecolo noire 500 ml", 25, "PGE500N")])
+
+# ---- 4e envoi : Dessiner - Peindre (suite), jeux éducatifs, imprimés administratifs ----
+TY.update({"aqua": ("Peinture à l'eau", "watercolour paint", "ألوان مائية"), "pam": ("Pâte à modeler", "modelling clay", "عجينة التشكيل"),
+           "pin": ("Pinceaux", "paintbrushes", "فرش الرسم"), "feu": ("Feutres de coloriage", "colouring felt pens", "أقلام اللباد للتلوين"),
+           "pal": ("Palette de peinture", "paint palette", "لوحة خلط الألوان"), "pdes": ("Papier dessin", "drawing paper", "ورق الرسم"),
+           "pcoul": ("Papier couleur", "coloured paper", "ورق ملون"), "huile": ("Peinture à l'huile", "oil paint", "ألوان زيتية"),
+           "slime": ("Slime", "slime", "سلايم"), "pail": ("Paillettes", "glitter", "مسحوق اللمعان"), "bonp": ("Bons points", "reward stamps", "أختام التشجيع"),
+           "roul2": ("Rouleau de peinture", "paint roller", "أسطوانة الطلاء"), "fix": ("Pâte à fixer", "reusable adhesive putty", "عجينة لاصقة"),
+           "canv": ("Toile de peinture", "painting canvas", "لوحة قماشية للرسم"), "jeu": ("", "", "")})
+_D["form"] = ("Imprimés et formulaires administratifs et scolaires.", "Administrative and school forms.", "مطبوعات واستمارات إدارية ومدرسية.")
+_D["jeu"] = ("Jeux pour apprendre en s'amusant.", "Games to learn while having fun.", "ألعاب للتعلم مع المتعة.")
+SUBS2.update({
+ "peint": S(BA, "Peinture", "Paint", "الألوان والطلاء", "art"), "huile": S(BA, "Peinture à l'huile", "Oil paint", "الألوان الزيتية", "art"),
+ "pin": S(BA, "Pinceaux & accessoires", "Brushes & accessories", "الفرش واللوازم", "art"), "pal": S(BA, "Chevalets & palettes", "Easels & palettes", "الحوامل ولوحات الألوان", "art"),
+ "feu": S(BA, "Feutres de coloriage", "Colouring felt pens", "أقلام التلوين اللبادية", "art"), "pdes": S(BA, "Papier dessin", "Drawing paper", "ورق الرسم", "art"),
+ "canv": S(BA, "Carnets de croquis & toiles", "Sketchbooks & canvases", "دفاتر الرسم واللوحات", "art"),
+ "jeux": S("Jeux & Loisirs", "Jeux éducatifs", "Educational games", "الألعاب التعليمية", "jeu"),
+ "form": S(B, "Imprimés administratifs", "Administrative forms", "المطبوعات الإدارية", "form"),
+})
+R2 += rows("v01", "peint", [("aqua", "Mikro 1", 10, "SB-1012")])
+R2 += rows("v02", "gomt", [("pam", x, p, r) for x, p, r in [("Clay Modeling 8 couleurs", 8, "0952"), ("Clay Modeling 8 couleurs", 10, "2208"), ("Clay Modeling 8 couleurs", 8, "BS-JZY09"),
+ ("Dough Modeling 8 couleurs", 12, "8112"), ("M-School 8 couleurs", 8, "8108"), ("M-School 8 couleurs", 15, "MS-B8-1"), ("M-School 8 couleurs", 8, "MS-A12"),
+ ("8 couleurs", 10, "ST-125-8"), ("Accord", 25, "PAT12C4"), ("Deli 6 couleurs", 10, "H714"), ("Deli 8 couleurs", 20, "D75021-CN"), ("Deli", 12, "H712-8"),
+ ("Express L'Arnabat", 8, "XJ-5859"), ("Express", 15, "XJ-6184"), ("Jovi", 20, "90/6"), ("M&G", 25, "AKE040E6"), ("Modeling Clay", 12, "B41-12"),
+ ("Smile Kids 12 couleurs", 25, "PSK20-12M"), ("Smile Kids 8 couleurs", 12, "SK-T108")]])
+R2 += rows("v04", "pin", [("pin", x, p, r) for x, p, r in [("Art Brush", 6, "20"), ("Arco 6 pièces", 15, ""), ("Ecolo n°12", 6, "012"), ("Ecolo n°6", 5, "06"), ("Ecolo n°20", 8, "20"),
+ ("Fyx 6 pièces", 10, ""), ("écolier n°12", 7, "012"), ("écolier n°14", 7, "014")]])
+R2 += rows("v05", "feu", [("feu", x, p, r) for x, p, r in [("BIC 24 pièces", 60, ""), ("Deli 12 pièces", 20, "C10000"), ("Deli 18 pièces", 30, ""), ("Flamingo 12 pièces", 20, "LT9012"),
+ ("Flamingo 6 pièces", 12, "LT9006"), ("Smart 6 pièces", 12, "FS7022/6"), ("BIC Visa 12 couleurs", 25, "510003"), ("Faber-Castell 12 couleurs", 30, "153012"), ("Maped 12 couleurs", 25, "SP84572005")]])
+R2 += rows("v06", "pal", [("pal", "Artista", 5, "XJ-4845"), ("pal", "", 5, "380")])
+R2 += rows("v07", "pdes", [("pdes", "blanc BlueStar A4 24×32 cm", 10, "TBB-0042023"), ("pcoul", "Ambassador A4 24×32 cm", 10, "6987"), ("pcoul", "B-M A4 160 g", 12, ""),
+ ("pcoul", "Chrono Art 240 g 24×32 cm", 10, ""), ("pcoul", "Canson grand format 180 cm", 10, "C200041380"), ("pcoul", "Canson 29,7×42 cm", 30, ""),
+ ("pdes", "blanc B-M 180 g", 15, ""), ("pdes", "Chrono Art blanc", 12, ""), ("pdes", "Chrono Art couleur", 12, ""), ("pdes", "Canson blanc 180 g", 20, "C200237701"),
+ ("pdes", "couleur B-M", 12, ""), ("pdes", "pochette normale", 10, ""), ("pdes", "Sylver 170 g 24×32 (12 feuilles)", 10, "")])
+R2 += rows("v08", "huile", [("huile", "Fox", 12, "RSB-12B"), ("huile", "M-School", 10, "MS-0585")])
+R2 += rows("v09", "gomt", [("slime", "Crystal Mud", 15, ""), ("slime", "Casber", 15, "JLC-585"), ("slime", "Mega Accord 220 g", 20, "FS-S250G")])
+R2 += rows("v10", "gomt", [("pail", "pot moyen", 5, ""), ("pail", "tube", 3, "YX-6-12")])
+R2 += rows("v11", "gomt", [("bonp", "Baihang", 2, "BH813-60B")])
+R2 += rows("v12", "pin", [("roul2", "Art Tools", 10, ""), ("roul2", "Express", 8, "022-2")])
+R2 += rows("v13", "gomt", [("fix", "Ambassador", 25, "A-808"), ("fix", "UHU Patafix (BIC)", 25, "391251")])
+R2 += rows("v14", "canv", [("canv", "écolier 20×30 cm", 30, ""), ("canv", "écolier 40×50 cm", 60, "")])
+JX = [("Letters & Numbers First Classroom", "Letters & Numbers First Classroom", "الحروف والأرقام First Classroom", 20, "8101"),
+      ("Boulier calcul mental", "Mental arithmetic abacus", "الحساب الذهني", 45, "138-17"), ("Boulier calcul mental (modèle 2)", "Mental arithmetic abacus (model 2)", "الحساب الذهني (نموذج 2)", 45, "165-13"),
+      ("Jetons de comptage", "Counting chips", "أقراص", 4, ""), ("Bâtonnets de calcul", "Counting sticks", "خشيبات", 4, "")]
+FM = [("Carte grise (imprimé)", "Vehicle registration form", "البطاقة الرمادية", 10), ("Permis de conduire provisoire (imprimé)", "Temporary driving licence form", "رخصة السياقة مؤقتة", 2),
+      ("Diplôme vierge décoré", "Blank decorated certificate", "شهادة", 12), ("Certificat médical du conducteur", "Driver's medical certificate", "شهادة الفحص الطبي للسائق", 10),
+      ("Constat amiable", "Accident report form", "معاينة ودية", 5), ("Dossier de renouvellement du permis de conduire", "Driving licence renewal file", "ملف تجديد رخصة السياقة", 8),
+      ("Dossier scolaire du secondaire qualifiant", "Upper-secondary school file", "ملف مدرسي التانوي التأهيلي", 5)]
+XTRA = [("v18", i, "jeux", (a, b, c), p, r, "") for i, (a, b, c, p, r) in enumerate(JX)] + [("v19", i, "form", (a, b, c), p, "", "") for i, (a, b, c, p) in enumerate(FM)]
+NO_PHOTO2 |= {("v02", 0), ("v07", 4)}
+_build1 = build
+def build():
+    out = _build1(); names = {r[3][0] for r in out}
+    return out + [x for x in XTRA if x[3][0] not in names]
+
+# ---- 5e envoi : informatique et divers ----
+TY.update({"usb": ("Clé USB", "USB flash drive", "ذاكرة USB"), "kst": ("Stickers clavier", "keyboard stickers", "ملصقات لوحة المفاتيح"),
+           "souris": ("Souris", "mouse", "فأرة"), "tapis": ("Tapis de souris", "mouse pad", "لوحة الفأرة"), "hp": ("Haut-parleurs", "speakers", "مكبرات الصوت"),
+           "cable": ("Câble USB téléphone", "phone USB cable", "كابل USB للهاتف"), "glit": ("Colle à paillettes", "glitter glue", "غراء لامع"),
+           "crayon": ("Crayon à papier", "pencil", "قلم رصاص")})
+_D["it"] = ("Accessoires informatiques pour la maison et le bureau.", "Computer accessories for home and office.", "إكسسوارات الحاسوب للبيت والمكتب.")
+SUBS2.update({"usb": S("Informatique & Consommables", "Clés USB & stockage", "USB drives & storage", "ذاكرات USB والتخزين", "it"),
+              "clav": S("Informatique & Consommables", "Claviers, souris & casques", "Keyboards, mice & headsets", "لوحات المفاتيح والفأرات والسماعات", "it"),
+              "hp": S("Informatique & Consommables", "Haut-parleurs & enceintes", "Speakers", "مكبرات الصوت", "it"),
+              "cable": S("Informatique & Consommables", "Câbles & piles", "Cables & batteries", "الكابلات والبطاريات", "it"),
+              "crayon": S("Écriture & Correction", "Crayons", "Pencils", "أقلام الرصاص", "pf")})
+R2 += rows("v20", "usb", [("usb", "Microcell 16 Go", 70, ""), ("usb", "Microcell 8 Go", 50, "")])
+R2 += [("v21", 1, "rfr", "", "Antigone — Jean Anouilh", 35, ""), ("v21", 2, "cis", "cis", "Casber", 8, "501-Y"), ("v21", 3, "colle", "glit", "80 g", 10, ""),
+       ("v21", 4, "crayon", "crayon", "HB Deli", 4, "38029N"), ("v21", 5, "rfr", "", "La Ficelle — Boule de suif (Maupassant)", 15, ""),
+       ("v21", 6, "para", "", "La Cité des sciences CE1", 70, ""), ("v21", 7, "rar", "", "كليلة ودمنة — عبد الله بن المقفع", 40, "")]
+R2 += rows("v22", "clav", [("kst", "AZERTY / QWERTY", 5, ""), ("souris", "sans fil Fashion", 44, "ZP220"), ("souris", "optique filaire", 30, "ZP220"), ("tapis", "Logitech", 30, "Q-3")])
+R2 += rows("v23", "hp", [("hp", "Youaiyou USB", 70, "C3")])
+R2 += rows("v24", "cable", [("cable", "2,4 A Micro-USB", 15, "")])
+NO_PHOTO2 |= {("v20", 1)}

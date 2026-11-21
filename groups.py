@@ -153,7 +153,11 @@ _REPL = {
  "Chemises & copies doubles": ["Chemises", "Copies & recharges"],
  "Papier calque & millimétré": ["Papier calque", "Papier millimétré"],
  "Manuels philosophie": ["Manuels philosophie", "Manuels éducation artistique"],
- "Peinture": ["Gouache", "Peinture"],
+ "Peinture": ["Gouache", "Peinture", "Peinture à l'huile"],
+ "Carnets de croquis & toiles": ["Papier dessin", "Carnets de croquis & toiles"],
+ "Pinceaux & accessoires": ["Pinceaux & accessoires", "Chevalets & palettes"],
+ "Reçus & bons": ["Reçus & bons", "Imprimés administratifs"],
+ "Claviers, souris & casques": ["Claviers, souris & casques", "Haut-parleurs & enceintes"],
 }
 def _rep(subs):
     out = []

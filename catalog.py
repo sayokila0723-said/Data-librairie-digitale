@@ -292,7 +292,9 @@ _old = {k.replace("Cahiers & Papeterie > ", "Papeterie & blocs-notes > "): v for
 # sous-rayons de démonstration remplacés par les produits réels du 2e relevé
 _DEMO_OUT = ("Rangement de bureau", "Blocs-notes & Post-it", "Papier A4 & papier couleur", "Enveloppes & courrier", "Agrafage & perforation",
              "Petite fourniture", "Calculatrices de bureau", "Calculatrices scientifiques", "Géométrie", "Dictionnaires", "Parascolaire",
-             "Crayons de couleur", "Crayons à cire", "Cahiers de coloriage")
+             "Crayons de couleur", "Crayons à cire", "Cahiers de coloriage",
+             "Feutres de coloriage", "Pinceaux & accessoires", "Peinture", "Carnets de croquis & toiles", "Peinture à l'huile", "Chevalets & palettes",
+             "Claviers, souris & casques", "Clés USB & stockage")
 _old = {k: v for k, v in _old.items() if k.split(" > ")[-1] not in _DEMO_OUT}
 _real = {}
 for (shot, idx, key, names, price, ref, flags) in RC.R:
