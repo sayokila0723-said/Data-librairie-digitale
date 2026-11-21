@@ -358,7 +358,7 @@ def build():
             fr = (tf + " " + rest).strip(); en = (rest + " " + te).strip() if rest else te[0].upper() + te[1:]
             ar = (ta + " " + rest).strip()
             en = en[0].upper() + en[1:]
-        k = (fr.lower(), float(price))
+        k = (fr.lower(), float(price), ref)
         if k in seen_np: continue          # même produit, même prix : affiché une seule fois
         seen_np.add(k)
         if fr in names:                      # même nom, autre modèle : on précise
@@ -465,3 +465,16 @@ R2 += rows("v22", "clav", [("kst", "AZERTY / QWERTY", 5, ""), ("souris", "sans f
 R2 += rows("v23", "hp", [("hp", "Youaiyou USB", 70, "C3")])
 R2 += rows("v24", "cable", [("cable", "2,4 A Micro-USB", 15, "")])
 NO_PHOTO2 |= {("v20", 1)}
+
+# ---- 6e envoi : cartables, trousses, sacs à goûter ----
+TY.update({"cart": ("Cartable", "school bag", "محفظة مدرسية"), "trou": ("Trousse", "pencil case", "مقلمة"), "gout": ("Sac à goûter", "lunch bag", "حقيبة اللمجة")})
+_D["sac"] = ("Cartables, trousses et sacs solides pour toute l'année scolaire.", "Sturdy school bags, pencil cases and lunch bags for the whole year.", "محافظ ومقالم وحقائب متينة طوال السنة الدراسية.")
+SUBS2.update({"cart": S(SC, "Cartables & sacs à dos", "School bags & backpacks", "المحافظ وحقائب الظهر", "sac"),
+              "trou": S(SC, "Trousses", "Pencil cases", "المقالم", "sac"),
+              "gout": S(SC, "Sacs à goûter", "Lunch bags", "حقائب اللمجة", "sac")})
+R2 += rows("v25", "cart", [("cart", "Be-Bolol", 180, "605A"), ("cart", "réf. 6956", 650, "6956"), ("cart", "Bestie", 80, "Z-01"), ("cart", "UniStyl Trolley 3 pièces", 550, "TT23-PGS")])
+R2 += rows("v26", "trou", [("trou", x, p, r) for x, p, r in [("3D GM Ruksac H2", 60, "24780-003"), ("Ambassador", 40, "66-280"), ("Aodasi", 25, "06295"), ("Aodasi", 45, "AS2530"),
+ ("Brillant noir", 25, ""), ("Durable", 45, "2502"), ("Durable", 15, "355-1"), ("Durable", 45, "SB1521"), ("M-School", 35, "MS-2635"), ("M-Bags", 30, "T016"),
+ ("M-Bags", 30, "T017"), ("Panda Express", 25, "24-300"), ("Ruck Sack RS", 45, "11326-002"), ("Spox", 30, "")]])
+R2 += rows("v27", "gout", [("gout", "réf. L001", 120, "L001"), ("gout", "réf. L006", 100, "L006"), ("gout", "Durable", 120, "L010")])
+NO_PHOTO2 |= {("v25", 1)}

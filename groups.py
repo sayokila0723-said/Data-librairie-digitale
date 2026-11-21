@@ -157,6 +157,7 @@ _REPL = {
  "Carnets de croquis & toiles": ["Papier dessin", "Carnets de croquis & toiles"],
  "Pinceaux & accessoires": ["Pinceaux & accessoires", "Chevalets & palettes"],
  "Reçus & bons": ["Reçus & bons", "Imprimés administratifs"],
+ "Trousses": ["Trousses", "Sacs à goûter"],
  "Claviers, souris & casques": ["Claviers, souris & casques", "Haut-parleurs & enceintes"],
 }
 def _rep(subs):

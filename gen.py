@@ -395,7 +395,7 @@ def build_home(L):
     U = SI.UI[L]; V = NV.N[L]; pre = "" if L == "fr" else "../"
     by = {p["name"]: p for p in P}
     _ALT = {"Calculatrice scientifique Casio fx-82MS": "Calculatrice Casio fx-991ES Plus", "Kit de traçage 4 pièces 30 cm Maped": "Kit de traçage Deli",
-            "Dictionnaire Le Robert Micro": "Larousse — Mon premier dictionnaire", "Organiseur de bureau en bois 6 cases": "Ensemble de bureau Office Set ARK", "Crayons de couleur Maped Color'Peps — 12": "Crayons de couleur Maped", "Feutres de coloriage Maped — 24": "Feutres de coloriage Maped 12 couleurs", "Set de 12 pinceaux synthétiques": "Pinceaux Arco 6 pièces"}
+            "Dictionnaire Le Robert Micro": "Larousse — Mon premier dictionnaire", "Organiseur de bureau en bois 6 cases": "Ensemble de bureau Office Set ARK", "Crayons de couleur Maped Color'Peps — 12": "Crayons de couleur Maped", "Feutres de coloriage Maped — 24": "Feutres de coloriage Maped 12 couleurs", "Set de 12 pinceaux synthétiques": "Pinceaux Arco 6 pièces", "Cartable primaire 2 compartiments": "Cartable Be-Bolol", "Trousse garnie 25 pièces": "Trousse M-School", "Cartable à roulettes 18 pouces": "Cartable UniStyl Trolley 3 pièces"}
     g = lambda n: by[n] if n in by else by[_ALT.get(n, n)]
     # bandeaux (slider)
     s1 = (f'<div class="hero__slide nb-s1 is-active"><div class="nb-s1__blob"></div>'
