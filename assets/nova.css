@@ -788,3 +788,8 @@ html[data-theme="dark"] .nb-tile--svc .nb-tile__logo { filter: brightness(0) inv
 html[data-theme="dark"] .soon-price { background: #3a2f12; color: #f7c714; }
 .nb-buy--soon { background: #1f8a43 !important; }
 .product.single .price .soon-price { font-size: 1.1rem; padding: 6px 16px; }
+/* « À venir » : discret */
+.nb-card.is-soon { opacity: .72; filter: saturate(.6); }
+.nb-card.is-soon:hover { opacity: 1; filter: none; }
+.nb-card.is-soon .soon-price { font-size: .8em; padding: 2px 10px; }
+.nb-card.is-soon .nb-buy--soon { background: transparent !important; color: #1f8a43 !important; border: 1px solid #cfe6d6; box-shadow: none; }

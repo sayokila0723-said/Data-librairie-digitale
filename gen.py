@@ -92,6 +92,7 @@ def wa(msg=""):
 
 # ---------------- données ----------------
 P = catalog.products()
+P.sort(key=lambda p: not p.get("real"))  # produits « À venir » toujours en dernier
 TOPS = catalog.TOP_ORDER
 SUBS = {}  # top -> [sub...]
 for p in P:
@@ -316,6 +317,7 @@ def cdata(p, n, pre, img=None, sku=None):
     return f'data-id="{sku or p["sku"]}" data-name="{E(n)}" data-p="{float(p["sale"] or p["regular"]):.2f}" data-img="{img or p["img"]}" data-url="{p["slug"]}.html"'
 
 def section(L, title, sub, link, items, pre):
+    items = [p for p in items if p.get("real")]  # jamais de produit « À venir » sur l'accueil
     U = SI.UI[L]
     if not items: return ""
     head_ = f'<header class="psection__head"><div><h2 class="psection__title">{E(title)}</h2>' + (f'<p class="psection__sub">{E(sub)}</p>' if sub else "") + '</div><div class="psection__actions">'
@@ -405,8 +407,8 @@ def build_home(L):
     U = SI.UI[L]; V = NV.N[L]; pre = "" if L == "fr" else "../"
     by = {p["name"]: p for p in P}
     _ALT = {"Calculatrice scientifique Casio fx-82MS": "Calculatrice Casio fx-991ES Plus", "Kit de traçage 4 pièces 30 cm Maped": "Kit de traçage Deli",
-            "Dictionnaire Le Robert Micro": "Larousse — Mon premier dictionnaire", "Organiseur de bureau en bois 6 cases": "Ensemble de bureau Office Set ARK", "Crayons de couleur Maped Color'Peps — 12": "Crayons de couleur Maped", "Feutres de coloriage Maped — 24": "Feutres de coloriage Maped 12 couleurs", "Set de 12 pinceaux synthétiques": "Pinceaux Arco 6 pièces", "Cartable primaire 2 compartiments": "Cartable Be-Bolol", "Trousse garnie 25 pièces": "Trousse M-School", "Cartable à roulettes 18 pouces": "Cartable UniStyl Trolley 3 pièces"}
-    g = lambda n: by[n] if n in by else by[_ALT.get(n, n)]
+            "Dictionnaire Le Robert Micro": "Larousse — Mon premier dictionnaire", "Organiseur de bureau en bois 6 cases": "Ensemble de bureau Office Set ARK", "Crayons de couleur Maped Color'Peps — 12": "Crayons de couleur Maped", "Feutres de coloriage Maped — 24": "Feutres de coloriage Maped 12 couleurs", "Set de 12 pinceaux synthétiques": "Pinceaux Arco 6 pièces", "Cartable primaire 2 compartiments": "Cartable Be-Bolol", "Trousse garnie 25 pièces": "Trousse M-School", "Cartable à roulettes 18 pouces": "Cartable UniStyl Trolley 3 pièces", "Bâton de colle UHU Stic 21 g": "Colle en bâton UHU 21 g"}
+    g = lambda n: by[_ALT[n]] if n in _ALT and _ALT[n] in by else by[n]
     # bandeaux (slider)
     s1 = (f'<div class="hero__slide nb-s1 is-active"><div class="nb-s1__blob"></div>'
           f'<div class="nb-s__text"><p class="nb-k">{E(V["s1_k"])}</p><h2 class="nb-t">{E(V["s1_t"])}</h2><p class="nb-y">{E(V["s1_y"])}</p><p class="nb-ribbon">{E(V["s1_b"])}</p>'
@@ -434,6 +436,7 @@ def build_home(L):
              + f'<a class="nb-tile nb-tile--list js-wa" href="{wa(U["wa_list"])}" target="_blank" rel="noopener"><span class="nb-tile__orb" aria-hidden="true"></span><span class="nb-tile__t">{E(V["t_list"])}</span><span class="nb-tile__b">{ic("whatsapp", 14)} {E(V["t_list_b"])}</span></a>')
     tiles = f'<section class="nb-tiles">{tiles}</section>'
     def band(title, sub, link, items):
+        items = [p for p in items if p.get("real")]
         if not items: return ""
         more = f'<a class="nb-more" href="{link}">{E(V["more"])} {ic("chevron", 14)}</a>' if link else ""
         return (f'<section class="nb-block"><header class="nb-band"><h2>{E(title)}</h2><p>{E(sub)}</p>{more}'
