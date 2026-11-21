@@ -240,7 +240,7 @@ def header(L, file, root, active=""):
 </div></div>
 <header class="site-header" data-sticky><div class="container header__inner">
  <button class="icon-btn header__burger" data-drawer-open aria-label="{E(U["menu"])}">{ic("menu", 22)}</button>
- <div class="header__logo"><a class="text-logo" href="index.html" rel="home"><span class="brandmark"><img src="{root}img/logo-data.png" alt="{E(U["brand"])}" width="250" height="249"></span><span class="text-logo__txt"><strong>{E(U["brand"])}</strong><small>{E(U["tagline"])}</small></span></a></div>
+ <div class="header__logo"><a class="text-logo" href="index.html" rel="home"><span class="brandmark"><img src="{root}img/logo-mark.png" alt="{E(U["brand"])}" width="360" height="360"></span><span class="text-logo__txt"><strong>{E(U["brand"])}</strong><small>{E(U["tagline"])}</small></span></a></div>
  <form class="search" role="search" method="get" action="recherche.html">
   <select name="cat" class="search__cat" aria-label="{E(U["cats"])}"><option value="">{E(U["all"])}</option>{opts}</select>
   <input class="search__input" type="search" name="s" placeholder="{E(NV.N[L]["search_ph"])}" aria-label="{E(U["search"])}">
@@ -766,7 +766,7 @@ if __name__ == "__main__":
         im.save(os.path.join(OUT, "img", "t", f), quality=78, optimize=True, progressive=True)
     A = BASE + "assets/"
     for f in ["site.css", "digitale.css", "nova.css", "dark.css", "app.js"]: shutil.copy(A + f, os.path.join(OUT, "assets", f))
-    for f in ["emblem.svg", "emblem-navy.svg", "favicon.png", "logo-trilingue-h.png", "logo-data.png"]: shutil.copy(A + f, os.path.join(OUT, "img", f))
+    for f in ["emblem.svg", "emblem-navy.svg", "favicon.png", "logo-trilingue-h.png", "logo-data.png", "logo-mark.png"]: shutil.copy(A + f, os.path.join(OUT, "img", f))
     os.makedirs(os.path.join(OUT, "logos"), exist_ok=True)
     for f in ["logo-trilingue.png", "logo-trilingue-horizontal.png", "logo-trilingue-transparent.png"]: shutil.copy(BASE + "assets/logos/" + f, os.path.join(OUT, "logos", f))
     shutil.copy(BASE + "config.js", os.path.join(OUT, "config.js"))
