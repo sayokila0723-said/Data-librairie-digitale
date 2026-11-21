@@ -94,7 +94,7 @@ def wa(msg=""):
 import time as _t
 ASSET_V = _t.strftime("%Y%m%d%H%M")
 P = catalog.products()
-P.sort(key=lambda p: not p.get("real"))  # produits « À venir » toujours en dernier
+P.sort(key=lambda p: not (p.get("real") and p.get("photo")))  # produits « À venir » toujours en dernier
 TOPS = catalog.TOP_ORDER
 SUBS = {}  # top -> [sub...]
 for p in P:
@@ -293,7 +293,7 @@ def footer(L, file, root):
 
 SOON_T = {"fr": "À venir", "en": "Coming soon", "ar": "قريباً"}
 ASK_T = {"fr": "Demander sur WhatsApp", "en": "Ask on WhatsApp", "ar": "استفسر عبر واتساب"}
-def soon(p): return not p.get("real")
+def soon(p): return not (p.get("real") and p.get("photo"))  # pas de photo ou de prix réels → « À venir »
 def soon_price(L): return f'<span class="soon-price">{E(SOON_T[L])}</span>'
 
 def card(p, L, pre=""):
@@ -319,7 +319,7 @@ def cdata(p, n, pre, img=None, sku=None):
     return f'data-id="{sku or p["sku"]}" data-name="{E(n)}" data-p="{float(p["sale"] or p["regular"]):.2f}" data-img="{img or p["img"]}" data-url="{p["slug"]}.html"'
 
 def section(L, title, sub, link, items, pre):
-    items = [p for p in items if p.get("real")]  # jamais de produit « À venir » sur l'accueil
+    items = [p for p in items if p.get("real") and p.get("photo")]  # jamais de produit « À venir » sur l'accueil
     U = SI.UI[L]
     if not items: return ""
     head_ = f'<header class="psection__head"><div><h2 class="psection__title">{E(title)}</h2>' + (f'<p class="psection__sub">{E(sub)}</p>' if sub else "") + '</div><div class="psection__actions">'
@@ -438,7 +438,7 @@ def build_home(L):
              + f'<a class="nb-tile nb-tile--list js-wa" href="{wa(U["wa_list"])}" target="_blank" rel="noopener"><span class="nb-tile__orb" aria-hidden="true"></span><span class="nb-tile__t">{E(V["t_list"])}</span><span class="nb-tile__b">{ic("whatsapp", 14)} {E(V["t_list_b"])}</span></a>')
     tiles = f'<section class="nb-tiles">{tiles}</section>'
     def band(title, sub, link, items):
-        items = [p for p in items if p.get("real")]
+        items = [p for p in items if p.get("real") and p.get("photo")]
         if not items: return ""
         more = f'<a class="nb-more" href="{link}">{E(V["more"])} {ic("chevron", 14)}</a>' if link else ""
         return (f'<section class="nb-block"><header class="nb-band"><h2>{E(title)}</h2><p>{E(sub)}</p>{more}'
