@@ -288,6 +288,11 @@ def footer(L, file, root):
 <script src="{root}config.js"></script><script src="{root}assets/app.js"></script>
 </body></html>'''
 
+SOON_T = {"fr": "À venir", "en": "Coming soon", "ar": "قريباً"}
+ASK_T = {"fr": "Demander sur WhatsApp", "en": "Ask on WhatsApp", "ar": "استفسر عبر واتساب"}
+def soon(p): return not p.get("real")
+def soon_price(L): return f'<span class="soon-price">{E(SOON_T[L])}</span>'
+
 def card(p, L, pre=""):
     U = SI.UI[L]
     on = ""
@@ -297,6 +302,11 @@ def card(p, L, pre=""):
     else:
         price = money(p["regular"], L)
     n = pname(p, L)
+    if soon(p):
+        on, price = "", soon_price(L)
+        return (f'<li class="product nb-card is-soon"><a href="{p["slug"]}.html" class="woocommerce-LoopProduct-link"><span class="nb-card__img"><img src="{pre}{thumb(p["img"])}" alt="{E(n)}" loading="lazy" width="400" height="400"></span>'
+                f'<h2 class="woocommerce-loop-product__title">{E(n)}</h2><span class="price">{price}</span></a>'
+                f'<div class="nb-card__foot"><a href="{p["slug"]}.html" class="nb-buy nb-buy--soon">{ic("whatsapp", 16)} {E(ASK_T[L])}</a></div></li>')
     return (f'<li class="product nb-card">{on}<a href="{p["slug"]}.html" class="woocommerce-LoopProduct-link"><span class="nb-card__img"><img src="{pre}{thumb(p["img"])}" alt="{E(n)}" loading="lazy" width="400" height="400"></span>'
             f'<h2 class="woocommerce-loop-product__title">{E(n)}</h2><span class="price">{price}</span></a>{swatches_mini(p, L, pre)}'
             + (f'<div class="nb-card__foot"><a href="{p["slug"]}.html" class="nb-buy nb-buy--choose">{ic("grid", 16)} {E(VR.LABELS[L]["choose"])}</a><span class="nb-stock">{E(U["in_stock"])}</span></div></li>' if "variants" in p else
@@ -590,13 +600,16 @@ def build_products(L):
             price = f'<del>{money(p["regular"], L)}</del> <ins>{money(p["sale"], L)}</ins>'; on = f'<span class="onsale" dir="ltr">-{pct}%</span>'
         else:
             price, on = money(p["regular"], L), ""
+        if soon(p): price, on = soon_price(L), ""
         sim = [q for q in P if q["sub"] == p["sub"] and q is not p][:4] or [q for q in P if q["top"] == p["top"] and q is not p][:4]
         body = (f'<div class="container shop-wrap"><div class="shop-content"><nav class="woocommerce-breadcrumb"><a href="index.html">{E(U["home"])}</a><span class="sep">/</span><a href="{cslug(p["top"])}.html">{E(cname(p["top"], L))}</a><span class="sep">/</span><a href="{cslug(p["sub"])}.html">{E(cname(p["sub"], L))}</a></nav>'
                 f'<div class="product single"><div class="pgrid"><div class="pgal">{on}<img id="pimg" src="{pre}{p["img"]}" alt="{E(n)}" width="600" height="600"></div>'
-                f'<div class="summary"><h1 class="product_title">{E(n)}</h1><p class="price">{price}</p><div class="pshort"><p>{E(pshort(p, L))}</p></div>{variants_block(p, L, pre)}<p class="stock in-stock">{E(U["in_stock"])}</p>'
+                f'<div class="summary"><h1 class="product_title">{E(n)}</h1><p class="price">{price}</p><div class="pshort"><p>{E(pshort(p, L))}</p></div>{variants_block(p, L, pre)}' + (
+                f'<a class="btn btn--whatsapp btn--block js-order-single" href="#" data-name="{E(n)}" data-price="{E(SOON_T[L])}">{ic("whatsapp", 20)} {E(ASK_T[L])}</a>' if soon(p) else
+                f'<p class="stock in-stock">{E(U["in_stock"])}</p>'
                 f'<form class="cart" onsubmit="return false"><div class="quantity"><label class="screen-reader-text" for="qty">{E(U["qty"])}</label><input id="qty" class="qty" type="number" min="1" value="1"></div>'
                 f'<button type="button" class="single_add_to_cart_button button alt js-add js-add-single" {cdata(p, n, pre, (p["variants"][0]["img"] if "variants" in p else None), (p["variants"][0]["sku"] if "variants" in p else None))}>{ic("cart", 18)} {E(PJ.J[L]["add"])}</button></form>'
-                f'<a class="btn btn--whatsapp btn--block js-order-single" href="#" data-name="{E(n)}" data-price="{money(p["sale"] or p["regular"], L)}">{ic("whatsapp", 20)} {E(U["order_wa"])}</a>'
+                f'<a class="btn btn--whatsapp btn--block js-order-single" href="#" data-name="{E(n)}" data-price="{money(p["sale"] or p["regular"], L)}">{ic("whatsapp", 20)} {E(U["order_wa"])}</a>') +
                 f'<div class="product_meta"><span>{E(U["ref"])} : <span id="psku">{p["sku"]}</span></span> · <span>{E(U["category"])} : <a href="{cslug(p["sub"])}.html">{E(cname(p["sub"], L))}</a></span></div></div></div>'
                 f'<div class="pdesc"><h2>{E(U["desc"])}</h2><p>{E(pshort(p, L))}</p><p>{E(EXTRA)}</p></div></div>'
                 f'<section class="related products"><h2>{E(U["similar"])}</h2><div class="woocommerce"><ul class="products columns-4">{"".join(card(q, L, pre) for q in sim)}</ul></div></section></div></div>')
@@ -651,8 +664,8 @@ def build_pages(L):
     page(L, "contact.html", U["contact"], contact, "contact.html")
     page(L, "recherche.html", U["search"], f'<div class="container shop-wrap"><div class="shop-content"><h1 class="page-title" id="titre-recherche">{E(U["search"])}</h1><div class="woocommerce"><ul class="products columns-4" id="resultats"></ul></div><div class="svc-grid" id="resultats-services"></div></div></div>')
     # index de recherche
-    idx = [{"t": "p", "n": pname(p, L), "u": p["slug"] + ".html", "i": thumb(p["img"]), "id": p["sku"], "v": f'{float(p["sale"] or p["regular"]):.2f}', "p": money(p["sale"] or p["regular"], L),
-            "o": money(p["regular"], L) if p["sale"] else "", "c": slug(p["top"]), "k": cname(p["top"], L) + " " + cname(p["sub"], L) + " " + p["name"] + " " + " ".join(cl(v["color"], L) + " " + cl(v["color"], "fr") for v in p.get("variants", []))} for p in P]
+    idx = [{"t": "p", "n": pname(p, L), "u": p["slug"] + ".html", "i": thumb(p["img"]), "id": p["sku"], "v": f'{float(p["sale"] or p["regular"]):.2f}', "p": SOON_T[L] if soon(p) else money(p["sale"] or p["regular"], L),
+            "o": money(p["regular"], L) if p["sale"] and not soon(p) else "", "c": slug(p["top"]), "k": cname(p["top"], L) + " " + cname(p["sub"], L) + " " + p["name"] + " " + " ".join(cl(v["color"], L) + " " + cl(v["color"], "fr") for v in p.get("variants", []))} for p in P]
     idx += [{"t": "s", "n": s[5][L][0], "d": s[5][L][1], "k": s[5]["fr"][0]} for s in SI.SERVICES]
     from web_services import PACKS
     idx += [{"t": "s", "n": d_[L][0], "d": d_[L][1] + " " + ", ".join(d_[L][2]), "p": pr[{"fr": 0, "en": 1, "ar": 2}[L]], "k": d_["fr"][0] + " pack"} for _, _, pr, _, d_ in PACKS]

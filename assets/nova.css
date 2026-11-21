@@ -782,3 +782,9 @@ html[data-theme="dark"] .nb-tiles::before { opacity: .25; }
 html[data-theme="dark"] .nb-tile--list .nb-tile__t::first-line { color: #fb7185; }
 html[data-theme="dark"] .nb-tile--svc .nb-tile__logo { filter: brightness(0) invert(.92); }
 @media (prefers-reduced-motion: reduce) { .nb-tile--list { animation: none !important; } }
+
+/* Produits sans prix réel : « À venir » */
+.soon-price { display: inline-block; padding: 4px 12px; border-radius: 999px; background: #fff4d6; color: #9a6700; font-weight: 800; font-size: .9em; }
+html[data-theme="dark"] .soon-price { background: #3a2f12; color: #f7c714; }
+.nb-buy--soon { background: #1f8a43 !important; }
+.product.single .price .soon-price { font-size: 1.1rem; padding: 6px 16px; }
