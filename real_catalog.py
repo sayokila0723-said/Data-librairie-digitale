@@ -122,7 +122,6 @@ R = [
  # ---- capture 1 : divers ----
  ("s01", 1, "roman", T("Antigone — Jean Anouilh", "Antigone — Jean Anouilh", "أنتيغون — جان أنوي"), 35, "", ""),
  ("s01", 2, "ciseaux", T("Ciseaux Casber", "Casber scissors", "مقص Casber"), 8, "501-Y", ""),
- ("s01", 3, "glitter", T("Colle pailletée Glitter Glue 50 ml", "Glitter Glue 50 ml", "غراء لامع Glitter Glue ‏50 مل"), 10, "", ""),
  ("s01", 4, "cray", CRAY("Deli", T("HB", "HB", "HB")), 4, "38029N", ""),
  ("s01", 5, "roman", T("La Ficelle — Boule de suif (Maupassant)", "La Ficelle — Boule de suif (Maupassant)", "الخيط — كرة الشحم (موباسان)"), 15, "", ""),
  ("s01", 6, "manuel", T("La Cité des sciences CE1", "La Cité des sciences — Year 2 (CE1)", "La Cité des sciences — المستوى الثاني ابتدائي"), 70, "", "n"),
