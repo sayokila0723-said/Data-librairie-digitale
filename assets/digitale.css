@@ -143,7 +143,7 @@ html, body { overflow-x: clip; }
 .brandmark img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .footer__brand { width: 150px; border-radius: 12px; }
 @media (max-width: 720px) { .brandmark { width: 46px; height: 46px; flex-basis: 46px; } .brandmark img { width: 100%; } }
-/* Logo d'en-tête plus visible */
-.brandmark { width: 72px; height: 72px; flex-basis: 72px; border-radius: 14px; background: #0b2545; box-shadow: 0 4px 12px -6px rgba(11,37,69,.6); }
-.brandmark img { width: 100%; height: 100%; object-fit: contain; }
-@media (max-width: 720px) { .brandmark { width: 54px; height: 54px; flex-basis: 54px; } }
+/* Logo d'en-tête plus visible (logo complet, agrandi) */
+.brandmark { width: 88px; height: 88px; flex-basis: 88px; border-radius: 12px; background: none; box-shadow: 0 4px 12px -6px rgba(11,37,69,.6); overflow: hidden; }
+.brandmark img { width: 100% !important; height: 100% !important; max-height: none !important; max-width: none !important; object-fit: cover; display: block; }
+@media (max-width: 720px) { .brandmark { width: 62px; height: 62px; flex-basis: 62px; } }
