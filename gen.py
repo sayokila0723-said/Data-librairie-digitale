@@ -240,7 +240,7 @@ def header(L, file, root, active=""):
 </div></div>
 <header class="site-header" data-sticky><div class="container header__inner">
  <button class="icon-btn header__burger" data-drawer-open aria-label="{E(U["menu"])}">{ic("menu", 22)}</button>
- <div class="header__logo"><a class="text-logo" href="index.html" rel="home"><span class="brandmark"><img src="{root}img/logo-mark.png" alt="{E(U["brand"])}" width="360" height="360"></span><span class="text-logo__txt"><strong>{E(U["brand"])}</strong><small>{E(U["tagline"])}</small></span></a></div>
+ <div class="header__logo"><a class="text-logo" href="index.html" rel="home"><span class="brandmark"><img src="{root}img/logo-mark.png" alt="{E(U["brand"])}" width="500" height="498"></span><span class="text-logo__txt"><strong>{E(U["brand"])}</strong><small>{E(U["tagline"])}</small></span></a></div>
  <form class="search" role="search" method="get" action="recherche.html">
   <select name="cat" class="search__cat" aria-label="{E(U["cats"])}"><option value="">{E(U["all"])}</option>{opts}</select>
   <input class="search__input" type="search" name="s" placeholder="{E(NV.N[L]["search_ph"])}" aria-label="{E(U["search"])}">
