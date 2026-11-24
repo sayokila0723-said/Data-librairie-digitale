@@ -462,7 +462,7 @@ def build_home(L):
     body += band(V["promo_sec"].upper() if L != "ar" else V["promo_sec"], V["promo_sub"], "", [p for p in P if p["sale"]])
     F = FIND[L]
     emb = f"https://maps.google.com/maps?q={MAP_Q}&ll={SHOP_LL}&z=16&hl={L}&output=embed"
-    body += (f'<section class="nb-block findus" id="nous-trouver"><div class="findus__map"><iframe src="{E(emb)}" title="{E(F["t"])}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>'
+    body += (f'<section class="nb-block findus" id="nous-trouver"><div class="findus__map"><iframe src="{E(emb)}" title="{E(F["t"])}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><span class="map-hood" dir="ltr" aria-hidden="true">{ic("pin", 14)}<bdi dir="ltr">Hay Charaf</bdi><i>·</i><bdi dir="rtl">حي الشرف</bdi></span>'
              f'<a class="findus__overlay" href="{E(PLACE_URL)}" target="_blank" rel="noopener" aria-label="{E(F["see"])}"></a></div>'
              f'<div class="findus__info"><span class="findus__pin">{ic("pin", 30)}</span><h2>{E(F["t"])}</h2><p class="findus__addr">{E(F["s"])}</p><p class="findus__near">{E(F["near"])}</p>'
              f'<a class="findus__go" href="{E(GO_URL)}" target="_blank" rel="noopener">{ic("send", 20)} {E(F["go"])}</a>'
@@ -651,7 +651,7 @@ def build_pages(L):
     emb = f"https://maps.google.com/maps?q={MAP_Q}&ll={SHOP_LL}&z=16&hl={L}&output=embed"  # même carte que le lien Google Maps
     dirs = f"https://www.google.com/maps/dir/?api=1&origin={quote_plus(ORIG)}&destination={quote_plus(DEST)}&travelmode=driving"
     plan = (f'<section class="plan container"><header class="plan__head"><h2>{E(U["plan_t"])}</h2><p>{E(U["plan_s"])}</p></header>'
-            f'<div class="plan__grid"><div class="plan__map"><iframe src="{E(emb)}" title="{E(U["plan_t"])}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>'
+            f'<div class="plan__grid"><div class="plan__map"><iframe src="{E(emb)}" title="{E(U["plan_t"])}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><span class="map-hood" dir="ltr" aria-hidden="true">{ic("pin", 14)}<bdi dir="ltr">Hay Charaf</bdi><i>·</i><bdi dir="rtl">حي الشرف</bdi></span></div>'
             f'<div class="plan__info"><ol class="plan__route"><li><span class="plan__dot plan__dot--a">A</span>{E(U["plan_from"])}</li><li><span class="plan__dot plan__dot--b">B</span>{E(U["plan_to"])}</li></ol>'
             f'<a class="btn btn--primary plan__btn" href="{E(dirs)}" target="_blank" rel="noopener">{ic("send", 18)} {E(U["plan_b"])}</a>'
             f'<a class="btn btn--whatsapp plan__btn plan__go" href="{E(GO_URL)}" target="_blank" rel="noopener">{ic("pin", 18)} {E(GO_T[L])}</a>'

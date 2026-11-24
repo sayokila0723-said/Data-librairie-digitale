@@ -793,3 +793,13 @@ html[data-theme="dark"] .soon-price { background: #3a2f12; color: #f7c714; }
 .nb-card.is-soon:hover { opacity: 1; filter: none; }
 .nb-card.is-soon .soon-price { font-size: .8em; padding: 2px 10px; }
 .nb-card.is-soon .nb-buy--soon { background: transparent !important; color: #1f8a43 !important; border: 1px solid #cfe6d6; box-shadow: none; }
+
+/* Nom du quartier sur la carte */
+.findus__map, .plan__map { position: relative; }
+.map-hood { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 2; pointer-events: none;
+  display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px; white-space: nowrap;
+  background: #0b2545; color: #fff; font-weight: 800; font-size: 14px; letter-spacing: .02em; box-shadow: 0 6px 16px -8px rgba(11,37,69,.7); }
+.map-hood svg { color: #f7c714; }
+.map-hood i { font-style: normal; color: #f7c714; }
+.map-hood bdi[dir="rtl"] { font-family: 'Cairo', sans-serif; }
+@media (max-width: 720px) { .map-hood { font-size: 12px; padding: 5px 11px; top: 8px; } }
