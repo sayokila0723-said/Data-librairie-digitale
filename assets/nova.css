@@ -803,3 +803,11 @@ html[data-theme="dark"] .soon-price { background: #3a2f12; color: #f7c714; }
 .map-hood i { font-style: normal; color: #f7c714; }
 .map-hood bdi[dir="rtl"] { font-family: 'Cairo', sans-serif; }
 @media (max-width: 720px) { .map-hood { font-size: 12px; padding: 5px 11px; top: 8px; } }
+
+/* Étiquette « Data Librairie » sous l'épingle */
+.map-shop { position: absolute; left: 50%; top: calc(50% + 10px); transform: translateX(-50%); z-index: 2; pointer-events: none;
+  display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px 5px 5px; border-radius: 999px; white-space: nowrap;
+  background: #f7c714; color: #0b2545; font-size: 16px; box-shadow: 0 8px 20px -8px rgba(11,37,69,.75); border: 2px solid #fff; }
+.map-shop img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; }
+.map-shop b { font-weight: 800; letter-spacing: .01em; }
+@media (max-width: 720px) { .map-shop { font-size: 13px; } .map-shop img { width: 24px; height: 24px; } }
