@@ -647,7 +647,7 @@ def build_pages(L):
                f'<a class="btn btn--whatsapp js-wa" href="{wa(U["wa_q"])}" target="_blank" rel="noopener">{ic("whatsapp", 20)} {E(U["write_wa"])}</a></div></div></div>')
     from urllib.parse import quote_plus
     ORIG, DEST = "Marjane Route de Casablanca, Marrakech", SHOP_LL
-    emb = f"https://maps.google.com/maps?saddr={quote_plus(ORIG)}&daddr={quote_plus(DEST)}&hl={L}&output=embed"
+    emb = f"https://maps.google.com/maps?q={SHOP_LL}&z=17&hl={L}&output=embed"  # même carte que le lien Google Maps
     dirs = f"https://www.google.com/maps/dir/?api=1&origin={quote_plus(ORIG)}&destination={quote_plus(DEST)}&travelmode=driving"
     plan = (f'<section class="plan container"><header class="plan__head"><h2>{E(U["plan_t"])}</h2><p>{E(U["plan_s"])}</p></header>'
             f'<div class="plan__grid"><div class="plan__map"><iframe src="{E(emb)}" title="{E(U["plan_t"])}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>'
