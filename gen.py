@@ -377,6 +377,7 @@ desktop.ini
 SHOP_LL = "31.673931121826172,-8.020695686340332"
 PLACE_URL = "https://maps.app.goo.gl/At59k2epAYsSkAC46"
 GO_URL = "https://maps.app.goo.gl/At59k2epAYsSkAC46"
+MAP_Q = "Data+Librairie+Charaf+L.C.H,+Marrakech"  # nom de la fiche Google Maps affiché sur la carte
 GO_T = {"fr": "Y aller depuis ma position", "en": "Directions from my location", "ar": "الطريق من موقعي الحالي"}
 
 FIND = {
@@ -460,7 +461,7 @@ def build_home(L):
             body += band(V["new_sec"].upper() if L != "ar" else V["new_sec"], V["new_sub"], "boutique.html", news)
     body += band(V["promo_sec"].upper() if L != "ar" else V["promo_sec"], V["promo_sub"], "", [p for p in P if p["sale"]])
     F = FIND[L]
-    emb = f"https://maps.google.com/maps?q={SHOP_LL}&z=16&hl={L}&output=embed"
+    emb = f"https://maps.google.com/maps?q={MAP_Q}&ll={SHOP_LL}&z=16&hl={L}&output=embed"
     body += (f'<section class="nb-block findus" id="nous-trouver"><div class="findus__map"><iframe src="{E(emb)}" title="{E(F["t"])}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>'
              f'<a class="findus__overlay" href="{E(PLACE_URL)}" target="_blank" rel="noopener" aria-label="{E(F["see"])}"></a></div>'
              f'<div class="findus__info"><span class="findus__pin">{ic("pin", 30)}</span><h2>{E(F["t"])}</h2><p class="findus__addr">{E(F["s"])}</p><p class="findus__near">{E(F["near"])}</p>'
@@ -647,7 +648,7 @@ def build_pages(L):
                f'<a class="btn btn--whatsapp js-wa" href="{wa(U["wa_q"])}" target="_blank" rel="noopener">{ic("whatsapp", 20)} {E(U["write_wa"])}</a></div></div></div>')
     from urllib.parse import quote_plus
     ORIG, DEST = "Marjane Route de Casablanca, Marrakech", SHOP_LL
-    emb = f"https://maps.google.com/maps?q={SHOP_LL}&z=16&hl={L}&output=embed"  # même carte que le lien Google Maps
+    emb = f"https://maps.google.com/maps?q={MAP_Q}&ll={SHOP_LL}&z=16&hl={L}&output=embed"  # même carte que le lien Google Maps
     dirs = f"https://www.google.com/maps/dir/?api=1&origin={quote_plus(ORIG)}&destination={quote_plus(DEST)}&travelmode=driving"
     plan = (f'<section class="plan container"><header class="plan__head"><h2>{E(U["plan_t"])}</h2><p>{E(U["plan_s"])}</p></header>'
             f'<div class="plan__grid"><div class="plan__map"><iframe src="{E(emb)}" title="{E(U["plan_t"])}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>'
